@@ -324,7 +324,7 @@ var config = {
             { field: 'text', caption: 'Filename', type: 'text' },
             { field: 'path_on_disk',  caption: 'Path', type: 'text' },
             { field: 'hostname', caption: 'System', type: 'text' },
-            { field: 'md5', caption: 'MD5', type: 'text'},
+            { field: 'md5', caption: 'Hash', type: 'text'},
             { field: 'notes', caption: 'Notes', type: 'text' },
             { field: 'attribution',  caption: 'Attribution', type: 'text' },
 
@@ -340,7 +340,7 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 }},
-            { field: 'md5', sortable: true,caption: 'MD5', size: '60px' , editable: { type: 'text', min: 32, max: 32 }},
+            { field: 'md5', sortable: true,caption: 'Hash', size: '60px' , editable: { type: 'text', min: 32, max: 128 }},
             { field: 'vt', sortable: true,caption: 'vt', size: '20px',
                 render: function(record){
                     icon = "unknown.png"

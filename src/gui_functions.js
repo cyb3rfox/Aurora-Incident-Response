@@ -203,12 +203,18 @@ function openMispAddMalwarePopup(recid) {
     else{
         fullpath = path + "\\" + filename
     }
-    md5 = w2ui.grd_malware.get(recid).md5
+    hash = w2ui.grd_malware.get(recid).md5
     notes = w2ui.grd_malware.get(recid).notes
+
+    //check what type of hash it is
+    hashtype = "md5"
+    if(hash.length == 40) hashtype = "sha1"
+    if(hash.length == 64) hashtype = "sha256"
+
 
     records = [ {recid:1, aurora_field_type:"Filename",misp_field_type:"filename",value:filename,comment:notes},
                 {recid:2, aurora_field_type:"Fullpath",misp_field_type:"filename",value:fullpath,comment:notes},
-                {recid:3, aurora_field_type:"MD5",misp_field_type:"md5",value:md5,comment:notes},
+                {recid:3, aurora_field_type:"Hash",misp_field_type:hashtype,value:hash,comment:notes},
     ]
 
     w2ui.grd_add_misp.records = records
