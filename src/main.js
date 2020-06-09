@@ -12,7 +12,10 @@ global.Dirty = {
 
 function createWindow () {
     // Create the browser window.
-    win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.png'})
+   win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.ico'})
+
+
+
 
     // and load the index.html of the app.
     win.loadFile('index.html')
@@ -40,7 +43,7 @@ function createWindow () {
 
 
 
-    // Open the DevTools.
+    // Open the DevTools
    //win.webContents.openDevTools()
 
     // Emitted when the window is closed.

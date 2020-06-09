@@ -315,7 +315,7 @@ var config = {
             { id: "to_hosts", text: 'To hosts', icon: 'fa fa-bullseye' },
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
-            { id: 'vt', type: 'button', caption: 'Check VT', icon: 'fa fa-disease' },
+            { id: 'vt', type: 'button', caption: 'Check VT', icon: 'fa fa-search' },
         ],
         multiSearch: true,
         searches: [
