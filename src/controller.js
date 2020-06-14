@@ -21,9 +21,6 @@ registerComponents = function(){
             case 'file:open_sod':
                 openSOD()
                 break;
-            case 'file:open_webdav':
-                openWebdavPopup()
-                break;
             case 'file:save_sod':
                 saveSOD()
                 break;
@@ -32,6 +29,9 @@ registerComponents = function(){
                 break;
             case 'file:request_lock':
                 requestLock()
+                break;
+            case 'file:open_webdav':
+                test_webdav()
                 break;
             case 'case_details':
                 openCasePopup()

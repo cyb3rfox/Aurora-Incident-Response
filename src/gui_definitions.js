@@ -110,7 +110,7 @@ var config = {
             { type: 'menu', id: 'file', text: 'File', icon: 'fa fa-file', items: [
                     { type: 'button', id: 'new_sod', text: 'New Engagement', icon: 'fa fa-plus' },
                     { type: 'button', id: 'open_sod', text: 'Open Engagement (File)', icon: 'fa fa-folder-open' },
-                   // { type: 'button', id: 'open_webdav', text: 'Open Engagement (WebDav)', icon: 'fa fa-server' },
+                    { type: 'button', id: 'open_webdav', text: 'Open Engagement (WebDav)', icon: 'fa fa-server' },
                     { type: 'button', id: 'save_sod', text: 'Save Engagement', icon: 'fa fa-save' },
                     { type: 'button', id: 'release_lock', text: 'Release Lock', icon: 'fa fa-lock-open' },
                     { type: 'button', id: 'request_lock', text: 'Request Lock', icon: 'fa fa-key' },
