@@ -202,11 +202,17 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 }},
-            { field: 'attribution', sortable: true,caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
+            { field: 'killchain',sortable: true, caption: 'Killchain', size: '100px',
+                editable: { type: 'list', items: case_data.killchain, showAll: true ,  match: 'contains' },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }},
             { field: 'event_data', caption: 'Event', size: '100%', info: true, editable: { type: 'text', min: 10, max: 500 }},
             { field: 'notes', caption: 'Notes', size: '200px', editable: { type: 'text', min: 0, max: 200 }},
             { field: 'visual',sortable: true, caption: 'Visual?', size: '40px', type:"checkbox", editable: { type: 'checkbox' }},
             { field: 'followup',sortable: true, caption: 'Followup', size: '40px', type:"checkbox", editable: { type: 'checkbox' }},
+            { field: 'attribution', sortable: true,caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
             { field: 'owner',sortable: true, caption: 'Owner', size: '100px',
                 editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
                 render: function (record, index, col_index) {

@@ -63,6 +63,7 @@ registerComponents = function(){
                     w2ui.grd_timeline.getColumn('event_host').editable.items = case_data.systems
                     w2ui.grd_timeline.getColumn('event_source_host').editable.items = case_data.systems
                     w2ui.grd_timeline.getColumn('direction').editable.items = case_data.direction
+                    w2ui.grd_timeline.getColumn('killchain').editable.items = case_data.killchain
                 }
                 w2ui.main_layout.content('main', w2ui.grd_timeline);
                 break;
