@@ -703,10 +703,10 @@ var config = {
 about_content = `
 
     <div id="aboutcontent" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;">
-    <p>Aurora 0.6</p>
+    <p>Aurora 0.6.2</p>
     (c) 2020 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
+    <p>Released under Apache 2.0 License</p>
     <p>Supported and used by <a onclick="browser_open('https://www.infoguard.ch')" href="#">InfoGuard</a></p>
-    <p>Free for private and professional use. Reselling not permitted.</p>
     <p>Application build using electron.js - <a onclick="browser_open('https://electronjs.org')"  href="#">https://electronjs.org</a></p>
     <p>Icons provided by <a onclick="browser_open('https://icons8.com')"  href="#">https://icons8.com</a> and <a onclick="browser_open('https://fontawesome.com')"  href="#">https://fontawesome.com</a> </p>
     <p>UI designed using <a onclick="browser_open('http://w2ui.com')"  href="#">http://w2ui.com</a></p>

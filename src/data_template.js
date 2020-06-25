@@ -53,7 +53,7 @@ data_template  = {
         { id: 1, text: 'Recon' },
         { id: 2, text: 'Weaponization' },
         { id: 3, text: 'Delivery' },
-        { id: 4, text: 'Exploutation' },
+        { id: 4, text: 'Exploitation' },
         { id: 5, text: 'Installation' },
         { id: 6, text: 'C2' },
         { id: 7, text: 'Actions on Obj.' },
