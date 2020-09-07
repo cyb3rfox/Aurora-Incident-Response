@@ -12,36 +12,13 @@ global.Dirty = {
 
 function createWindow () {
     // Create the browser window.
-   win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.ico'})
-
-
-
+    win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.ico'})
+    win.setMenuBarVisibility(false)
 
     // and load the index.html of the app.
     win.loadFile('index.html')
 
-
-
-
-
-    const { app, Menu } = require('electron')
-
-    var template = [{
-        label: "Aurora IR",
-        submenu: [
-            { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
-        ]}, {
-        label: "Edit",
-        submenu: [
-            { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
-            { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
-            { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
-        ]}
-    ];
-
-    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
-
-
+    const app = require('electron')
 
     // Open the DevTools
    //win.webContents.openDevTools()
@@ -51,24 +28,15 @@ function createWindow () {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
-
-
         win = null
     })
 
     win.on('close', function(e){
-
-
-
       if(global.Dirty.is_dirty) { // if the file has not been unlocked on the server, unlock it first. needs too wait for saving to finish - hence preventDefault().
             e.preventDefault()
             win.webContents.executeJavaScript('cleanup()');
         }
-
-
     });
-
-
 }
 
 // This method will be called when Electron has finished
@@ -80,14 +48,10 @@ app.on('ready', createWindow)
 app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
     // to stay active until the user quits explicitly with Cmd + Q
-  //  if (process.platform !== 'darwin') {
-
+    //  if (process.platform !== 'darwin') {
         app.quit()
     //}
 })
-
-
-
 
 // SSL/TSL: this is the self signed certificate support
 app.on('certificate-error', (event, webContents, url, error, certificate, callback) => {
