@@ -554,12 +554,15 @@ var config = {
         searches: [
             { field: 'ip', caption: 'IP', type: 'text' },
             { field: 'text', caption: 'Hostname', type: 'text' },
+            { field: 'os', caption: 'Operating System', type: 'text' },
         ],
         columns: [
+
             { field: 'text',sortable: true, caption: 'Hostname', size: '250px', editable: { type: 'text', min: 1, max: 100 } },
             { field: 'ip',sortable: true, caption: 'IP', size: '160px', editable: { type: 'text', min: 7, max: 15 } },
             { field: 'description',sortable: true, caption: 'Description', size: '100%', editable: { type: 'text' } },
             { field: 'owner',sortable: true, caption: 'Owner', size: '80px', editable: { type: 'text'} },
+            { field: 'os',sortable: true, caption: 'Operating System', size: '250px', editable: { type: 'text', min: 0, max: 30 } },
             { field: 'pin',sortable: true, caption: 'pin', size: '20px', editable: { type: 'checkbox' } },
         ],
         toolbar: {

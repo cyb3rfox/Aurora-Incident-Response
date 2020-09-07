@@ -9,7 +9,7 @@ and generally stay on top pf the game.
 
 ## 1.1 Download & Installation
 
-You can download the current release of Aurora Incident Response from the Release Page.
+You can download the current release of Aurora Incident Response from the Release Page (https://github.com/cyb3rfox/Aurora-Incident-Response/releases).
 Aurora Incident Response is available for MacOS, Windows and Linux. We are working on making it available for
 iPads and Android Tablets as well.
 
