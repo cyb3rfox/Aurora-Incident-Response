@@ -151,6 +151,7 @@ var config = {
                 ]},
             { id: 'case_management', text: 'Case Management', group: true, expanded: true, nodes: [
                     { id: 'investigators', text: 'Investigators', icon: 'fa fa-user'},
+                    { id: 'evidence', text: 'Evidence', icon: 'fa fa-briefcase'},
                     { id: 'actions', text: 'Action Items', icon: 'fa fa-clipboard-list'},
                     { id: 'casenotes', text: 'Case Notes', icon: 'fa fa-sticky-note'},
                 ]
@@ -350,16 +351,26 @@ var config = {
             { field: 'vt', sortable: true,caption: 'vt', size: '20px',
                 render: function(record){
                     icon = "unknown.png"
+                    caption = "Not checked"
 
-                    if(record.vt == "infected") icon="virus.png"
-                    if(record.vt == "clean") icon="clean.png"
-                    if(record.vt == "noresult") icon="no_results.png"
-                    html = '<img src="./img/'+icon+'" style="width:16px;height:16px" >'
+                    if(record.vt == "infected") {
+                        icon="virus.png"
+                        caption = "Malicious"
+                    }
+                    if(record.vt == "clean") {
+                        icon="clean.png"
+                        caption = "Clean"
+                    }
+                    if(record.vt == "noresult") {
+                        icon="no_results.png"
+                        caption = "No results on VT"
+                    }
+                    html = '<img src="./img/'+icon+'" alt="'+caption+'" style="width:16px;height:16px" >'
                     return html
                 }
             },
             { field: 'attribution',sortable: true, caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
-            { field: 'notes', sortable: true,caption: 'notes', size: '100%', editable: { type: 'text', min: 0, max: 500 }},
+            { field: 'notes', sortable: true,caption: 'notes', size: '100%', editable: { type: 'text', min: 0, max: 500 },info: true},
 
         ],
         toolbar: {
@@ -545,8 +556,10 @@ var config = {
             { field: 'text', caption: 'Hostname', type: 'text' },
         ],
         columns: [
-            { field: 'text',sortable: true, caption: 'Hostname', size: '100%', editable: { type: 'text', min: 1, max: 100 } },
-            { field: 'ip',sortable: true, caption: 'IP', size: '250px', editable: { type: 'text', min: 7, max: 15 } },
+            { field: 'text',sortable: true, caption: 'Hostname', size: '250px', editable: { type: 'text', min: 1, max: 100 } },
+            { field: 'ip',sortable: true, caption: 'IP', size: '160px', editable: { type: 'text', min: 7, max: 15 } },
+            { field: 'description',sortable: true, caption: 'Description', size: '100%', editable: { type: 'text' } },
+            { field: 'owner',sortable: true, caption: 'Owner', size: '80px', editable: { type: 'text'} },
             { field: 'pin',sortable: true, caption: 'pin', size: '20px', editable: { type: 'checkbox' } },
         ],
         toolbar: {
@@ -583,6 +596,38 @@ var config = {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Investigator', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Investigator', icon: 'fa fa-minus' }
+            ],
+        },
+        records: [
+
+        ],
+    },
+
+    //////////////////////////
+    ///// Evidence  GRID /////
+    //////////////////////////
+
+    grd_evidence: {
+        name: 'grd_evidence',
+        show: {
+            toolbar: true,
+            footer: true,
+
+        },
+        columns: [
+            { field: 'recid', sortable: true,caption: 'ID', size: '30px'},
+            { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
+            { field: 'name',sortable: true, caption: 'Name', size: '130px', editable: { type: 'text'}  },
+            { field: 'description',sortable: true, caption: 'Description', size: '100%',editable: { type: 'text' }  },
+            { field: 'size', sortable: true,caption: 'Size', size: '120px' , editable: { type: 'text' }},
+            { field: 'proivder', sortable: true,caption: 'Acquired/Provided', size: '120px' , editable: { type: 'text' }},
+            { field: 'location', sortable: true,caption: 'Location', size: '120px' , editable: { type: 'text' }},
+
+        ],
+        toolbar: {
+            items: [
+                { id: 'add', type: 'button', caption: 'Add Evidence', icon: 'w2ui-icon-plus' },
+                { id: 'remove', type: 'button', caption: 'Remove Evidence', icon: 'fa fa-minus' }
             ],
         },
         records: [
@@ -703,7 +748,7 @@ var config = {
 about_content = `
 
     <div id="aboutcontent" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;">
-    <p>Aurora 0.6.2</p>
+    <p>Aurora 0.6.3</p>
     (c) 2020 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
     <p>Released under Apache 2.0 License</p>
     <p>Supported and used by <a onclick="browser_open('https://www.infoguard.ch')" href="#">InfoGuard</a></p>
