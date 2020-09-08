@@ -252,6 +252,17 @@ function updateVersion(current_version){
         case_data.evidence = []
     }
 
+    // 4 -> 5
+    case_data.system_types =[
+        {id:1,text:"Desktop"},
+        {id:2,text:"Server"},
+        {id:3,text:"Phone"},
+        {id:4,text:"Tablet"},
+        {id:5,text:"TV"},
+        {id:6,text:"Networking device"},
+        {id:7,text:"IoT device"},
+        {id:8,text:"Other"}
+    ]
 
 
 }

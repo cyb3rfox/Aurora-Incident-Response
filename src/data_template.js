@@ -1,6 +1,6 @@
 // Main Data Template for new files
 
-storage_format_version = 4
+storage_format_version = 5
 
 data_template  = {
     "storage_format_version": storage_format_version,
