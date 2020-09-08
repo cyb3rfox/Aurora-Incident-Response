@@ -6,9 +6,7 @@ var pstyle = 'border: 1px solid #dfdfdf; padding: 5px;';
 var case_data = data_template
 
 
-
 var config = {
-
 
     ///////////////////
     ///// Layouts /////
@@ -23,7 +21,6 @@ var config = {
             { type: 'main', minSize: 550, overflow: 'hidden' }
         ]
     },
-
     lateral_layout: {
         name: 'lateral_layout',
         padding: 0,
@@ -85,15 +82,12 @@ var config = {
             { id: 'tab_vt', caption: 'Virustotal'},
         ],
     },
-
     webdav_form: { //TODO: Refactor using a template
         name: 'webdav_form',
         fields: [
             { name: 'server',  type: 'text', html: { caption: 'Webdav Directory URL', attr: 'size="40"' } },
-
         ],
         actions: {
-
             Connect: function () {
                 openWebDav()
             }
@@ -104,6 +98,7 @@ var config = {
     ////////////////////
     ///// Toolbars /////
     ////////////////////
+    
     toolbar: {
         name: 'toolbar',
         items: [
@@ -124,7 +119,6 @@ var config = {
 
         ],
     },
-
 
 
     ////////////////////
@@ -168,17 +162,15 @@ var config = {
         name: 'grd_timeline',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         multiSearch: true,
         searches: [
             { field: 'event_data', caption: 'Event', type: 'text' },
-            { field: 'event_type', caption: 'event_type', type: 'list', options:{items:case_data.event_types} },
+            { field: 'event_type', caption: 'Event Type', type: 'list', options:{items:case_data.event_types} },
             { field: 'event_host', caption: 'Event System', type: 'text' },
             { field: 'event_source_host', caption: 'Source System', type: 'text'},
             { field: 'attribution', caption: 'Attribution', type: 'text' }
-
         ],
         columns: [
             { field: 'date_time', caption: 'Date/Time', type:"text",size: '140px',editable: { type: 'datetime' } ,sortable: true },
@@ -240,10 +232,8 @@ var config = {
         name: 'grd_investigated_systems',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
-
         menu: [
 
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
@@ -255,7 +245,6 @@ var config = {
             { field: 'analyst', caption: 'Analyst', type: 'text'},
             { field: 'verdict', caption: 'Verdict', type: 'list', options:{items:case_data.verdicts} },
             { field: 'report_status', caption: 'Report Status', type: 'list', options:{items:case_data.status} }
-
         ],
         columns: [
             { field: 'date_added', sortable: true,caption: 'Date added', size: '80px' , render:'date:YYYY-MM-DD' },
@@ -291,14 +280,12 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 } }
-
         ],
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Record', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
-
         },
         records: [
 
@@ -314,8 +301,7 @@ var config = {
         name: 'grd_malware',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         menu: [
             { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy' },
@@ -326,15 +312,12 @@ var config = {
         ],
         multiSearch: true,
         searches: [
-
-
             { field: 'text', caption: 'Filename', type: 'text' },
             { field: 'path_on_disk',  caption: 'Path', type: 'text' },
             { field: 'hostname', caption: 'System', type: 'text' },
             { field: 'md5', caption: 'Hash', type: 'text'},
             { field: 'notes', caption: 'Notes', type: 'text' },
             { field: 'attribution',  caption: 'Attribution', type: 'text' },
-
         ],
         columns: [
             { field: 'date_added', sortable: true,caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
@@ -393,8 +376,7 @@ var config = {
         name: 'grd_accounts',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         multiSearch: true,
         searches: [
@@ -411,18 +393,14 @@ var config = {
             { field: 'last_activity', sortable: true,caption: 'Last Activity', type:"datetime",size: '140px',editable: { type: 'datetime' } },
             { field: 'privileges', sortable: true,caption: 'Privileges', size: '120px', type:"text", editable: { type: 'text' }},
             { field: 'attribution',sortable: true, caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
-
         ],
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
-
         },
-        records: [
-        ],
-
+        records: [],
     },
 
 
@@ -434,8 +412,7 @@ var config = {
         name: 'grd_network',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         menu: [
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
@@ -472,8 +449,7 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-        ],
+        records: [],
     },
 
     /////////////////////////////
@@ -484,11 +460,9 @@ var config = {
         name: 'grd_exfiltration',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         menu: [
-
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
         ],
         multiSearch: true,
@@ -533,15 +507,13 @@ var config = {
                 { id: 'import', type: 'button', caption: 'Import Exfil', icon: 'fa fa-upload' }
             ],
         },
-        records: [
-        ],
-
+        records: []
     },
 
 
-    /////////////////////////////
+    ////////////////////////
     ///// Systems GRID /////
-    /////////////////////////////
+    ////////////////////////
 
     grd_systems: {
         name: 'grd_systems',
@@ -555,15 +527,22 @@ var config = {
             { field: 'ip', caption: 'IP', type: 'text' },
             { field: 'text', caption: 'Hostname', type: 'text' },
             { field: 'os', caption: 'Operating System', type: 'text' },
+            { field: 'system_type', caption: 'System Type', type: 'list', options:{items:case_data.system_types} },
         ],
         columns: [
-
             { field: 'text',sortable: true, caption: 'Hostname', size: '250px', editable: { type: 'text', min: 1, max: 100 } },
-            { field: 'ip',sortable: true, caption: 'IP', size: '160px', editable: { type: 'text', min: 7, max: 15 } },
-            { field: 'description',sortable: true, caption: 'Description', size: '100%', editable: { type: 'text' } },
-            { field: 'owner',sortable: true, caption: 'Owner', size: '80px', editable: { type: 'text'} },
+            { field: 'ip',sortable: true, caption: 'IP', size: '110px', editable: { type: 'text', min: 7, max: 15 } },
+            { field: 'system_type', sortable: true, caption: 'Type', size: '120px',
+                editable: { type: 'list', items: case_data.system_types, showAll: true },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }
+            },
             { field: 'os',sortable: true, caption: 'Operating System', size: '250px', editable: { type: 'text', min: 0, max: 30 } },
-            { field: 'pin',sortable: true, caption: 'pin', size: '20px', editable: { type: 'checkbox' } },
+            { field: 'owner',sortable: true, caption: 'Owner', size: '100px', editable: { type: 'text'} },
+            { field: 'description',sortable: true, caption: 'Description', size: '100%', editable: { type: 'text' } },
+            { field: 'pin',sortable: true, caption: 'Pin', size: '20px', editable: { type: 'checkbox' } },
         ],
         toolbar: {
             items: [
@@ -571,10 +550,8 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-        ],
+        records: []
     },
-
 
 
     ///////////////////////////////
@@ -585,15 +562,13 @@ var config = {
         name: 'grd_investigators',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         columns: [
             { field: 'recid', sortable: true,caption: 'recid', size: '150px'},
             { field: 'text',sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 }  },
             { field: 'full_name',sortable: true, caption: 'Full Name', size: '200px',editable: { type: 'text', min: 5, max: 40 }  },
             { field: 'role', sortable: true,caption: 'Role', size: '200px' , editable: { type: 'text', min: 0, max: 40 } },
-
         ],
         toolbar: {
             items: [
@@ -601,9 +576,7 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Investigator', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-
-        ],
+        records: []
     },
 
     //////////////////////////
@@ -614,8 +587,7 @@ var config = {
         name: 'grd_evidence',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         columns: [
             { field: 'recid', sortable: true,caption: 'ID', size: '30px'},
@@ -625,7 +597,6 @@ var config = {
             { field: 'size', sortable: true,caption: 'Size', size: '120px' , editable: { type: 'text' }},
             { field: 'proivder', sortable: true,caption: 'Acquired/Provided', size: '120px' , editable: { type: 'text' }},
             { field: 'location', sortable: true,caption: 'Location', size: '120px' , editable: { type: 'text' }},
-
         ],
         toolbar: {
             items: [
@@ -633,22 +604,19 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Evidence', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-
-        ],
+        records: []
     },
 
 
-    /////////////////////////////
+    ////////////////////////
     ///// Actions GRID /////
-    /////////////////////////////
+    ////////////////////////
 
     grd_actions: {
         name: 'grd_actions',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
@@ -664,7 +632,6 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 }},
-
         ],
         toolbar: {
             items: [
@@ -672,8 +639,7 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-        ],
+        records: []
     },
 
 
@@ -685,8 +651,7 @@ var config = {
         name: 'grd_casenotes',
         show: {
             toolbar: true,
-            footer: true,
-
+            footer: true
         },
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
@@ -696,7 +661,6 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 }},
-
         ],
         toolbar: {
             items: [
@@ -704,8 +668,7 @@ var config = {
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
             ],
         },
-        records: [
-        ],
+        records: []
     },
 
 
@@ -719,8 +682,7 @@ var config = {
             toolbar: true,
             footer: false,
             selectColumn: true,
-            toolbarSearch: false,
-
+            toolbarSearch: false
         },
         columns: [
             { field: 'aurora_field_type', sortable: true,caption: 'Field Type', size: '90px' },
@@ -737,12 +699,8 @@ var config = {
                 { id: 'send', type: 'button', caption: 'Send', icon: 'fa fa-cloud' },
             ],
         },
-        records: [
-        ],
+        records: []
     },
-
-
-
 };
 
 /**
