@@ -28,8 +28,19 @@ function activateReadOnly(){
     w2ui.grd_investigators.toolbar.disable("add","remove")
     w2ui.grd_evidence.toolbar.disable("add","remove")
 
-    //deactivate context menues
-    w2ui.grd_investigated_systems.menu.disable("to_tl")
+    //deactivate context menus
+    deactivate_all_context_items(w2ui.grd_timeline.menu)
+    deactivate_all_context_items(w2ui.grd_investigated_systems.menu)
+    deactivate_all_context_items(w2ui.grd_malware.menu)
+    deactivate_all_context_items(w2ui.grd_accounts.menu)
+    deactivate_all_context_items(w2ui.grd_network.menu)
+    deactivate_all_context_items(w2ui.grd_exfiltration.menu)
+    deactivate_all_context_items(w2ui.grd_systems.menu)
+    deactivate_all_context_items(w2ui.grd_investigators.menu)
+    deactivate_all_context_items(w2ui.grd_evidence.menu)
+    deactivate_all_context_items(w2ui.grd_actions.menu)
+    deactivate_all_context_items(w2ui.grd_casenotes.menu)
+
 
 
 
@@ -109,6 +120,19 @@ function deactivateReadOnly(){
     writeenable_grid(w2ui.grd_investigators,config.grd_investigators)
     writeenable_grid(w2ui.grd_evidence,config.grd_evidence)
 
+    //activate context menus
+    activate_all_context_items(w2ui.grd_timeline.menu)
+    activate_all_context_items(w2ui.grd_investigated_systems.menu)
+    activate_all_context_items(w2ui.grd_malware.menu)
+    activate_all_context_items(w2ui.grd_accounts.menu)
+    activate_all_context_items(w2ui.grd_network.menu)
+    activate_all_context_items(w2ui.grd_exfiltration.menu)
+    activate_all_context_items(w2ui.grd_systems.menu)
+    activate_all_context_items(w2ui.grd_investigators.menu)
+    activate_all_context_items(w2ui.grd_evidence.menu)
+    activate_all_context_items(w2ui.grd_actions.menu)
+    activate_all_context_items(w2ui.grd_casenotes.menu)
+
     //repropagate dropdowns
     w2ui.grd_timeline.getColumn('owner').editable.items = case_data.investigators
     w2ui.grd_timeline.getColumn('event_host').editable.items = case_data.systems
@@ -170,6 +194,13 @@ function openAboutPopup() {
  * Show case Details
  */
 function openCasePopup() {
+
+    if(case_data.locked && !lockedByMe){
+
+        alert("Can't change case data when the file is locked.")
+        return;
+
+    }
     w2ui.case_form.record['caseid']=case_data.case_id
     w2ui.case_form.record['client']=case_data.client
     w2ui.case_form.record['start_date']=case_data.start_date
@@ -605,4 +636,28 @@ function writeenable_grid(grid,template){
         grid.columns[i].editable = template.columns[i].editable
     }
     grid.refresh()
+}
+
+/**
+ * deactivate all context menu items
+ * @param menu
+ */
+function deactivate_all_context_items(menu){
+
+    if(menu==null) return;
+    for(i=0;i<menu.length;i++){
+        menu[i].disabled=true
+    }
+}
+
+/**
+ * deactivate all context menu items
+ * @param menu
+ */
+function activate_all_context_items(menu){
+
+    if(menu==null) return;
+    for(i=0;i<menu.length;i++){
+        menu[i].disabled=false
+    }
 }

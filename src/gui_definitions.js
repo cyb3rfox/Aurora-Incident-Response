@@ -307,7 +307,7 @@ var config = {
             footer: true
         },
         menu: [
-            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy' },
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: "to_hosts", text: 'To hosts', icon: 'fa fa-bullseye' },
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
@@ -508,7 +508,6 @@ var config = {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
-                { id: 'import', type: 'button', caption: 'Import Exfil', icon: 'fa fa-upload' }
             ],
         },
         records: []
