@@ -1,6 +1,3 @@
-
-
-
 // Main Data Template for new files
 
 storage_format_version = 4
@@ -35,6 +32,16 @@ data_template  = {
         {id:9,text:"eMail"},
         {id:10,text:"Misc"}
     ],
+    "system_types":[
+        {id:1,text:"Desktop"},
+        {id:2,text:"Server"},
+        {id:3,text:"Phone"},
+        {id:4,text:"Tablet"},
+        {id:5,text:"TV"},
+        {id:6,text:"Networking device"},
+        {id:7,text:"IoT device"},
+        {id:8,text:"Other"}
+    ],
     "verdicts":[
         {id:1,text:"Infected"},
         {id:2,text:"Accessed"},
@@ -63,7 +70,6 @@ data_template  = {
 
 
 misp_attribute_types = [
-
     { id: 1, text: 'filename' },
     { id: 2, text: 'domain' },
     { id: 3, text: 'ip-dst' },
