@@ -130,13 +130,13 @@ var config = {
         bottomHTML : '<div id="lock" style="background-color: #eee; padding: 10px 5px; border-top: 1px solid silver">&#128272; open</div>',
         nodes: [
             { id: 'investigation', text: 'Investigation', group: true, expanded: true, nodes: [
+                    { id: 'systems', text: 'Systems', icon: 'fa fa-desktop'},
                     { id: 'timeline', text: 'Timeline', icon: 'fa fa-clock'},
                     { id: 'investigated_systems', text: 'Investigated Systems', icon: 'fa fa-bullseye' },
                     { id: 'malware', text: 'Malware/Tools', icon: 'fa fa-skull-crossbones'},
                     { id: 'accounts', text: 'Compromised Accounts', icon: 'fa fa-users'},
                     { id: 'network', text: 'Network Indicators', icon: 'fa fa-network-wired'},
                     { id: 'exfiltration', text: 'Exfiltration', icon: 'fa fa-file-export'},
-                    { id: 'systems', text: 'Systems', icon: 'fa fa-desktop'},
                 ]},
             { id: 'reporting', text: 'Reporting', group: true, expanded: true, nodes: [
                     { id: 'vis_timeline', text: 'Visual Timeline', icon: 'fa fa-chart-line'},
