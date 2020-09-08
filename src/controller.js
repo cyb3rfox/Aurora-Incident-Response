@@ -82,6 +82,11 @@ registerComponents = function(){
                 w2ui.main_layout.content('main', w2ui.grd_investigators);
                 break;
 
+            case 'evidence':
+                syncAllChanges()
+                w2ui.main_layout.content('main', w2ui.grd_evidence);
+                break;
+
             case 'malware':
                 syncAllChanges()
                 if(lockedByMe) { //only propagate editables when the user can actually pic. when locked the editables will be null objects
@@ -455,6 +460,24 @@ registerComponents = function(){
     w2ui.grd_investigators.toolbar.onClick = function(event){
 
         currentgrid = w2ui.grd_investigators
+        switch(event.target) {
+            case 'add':
+                currentgrid.add({ recid: getNextRECID(currentgrid) });
+                break;
+
+            case 'remove':
+                currentgrid.remove(currentgrid.getSelection())
+                break;
+        }
+    }
+
+    ///////////////////
+    // Investigators //
+    ///////////////////
+
+    w2ui.grd_evidence.toolbar.onClick = function(event){
+
+        currentgrid = w2ui.grd_evidence
         switch(event.target) {
             case 'add':
                 currentgrid.add({ recid: getNextRECID(currentgrid) });

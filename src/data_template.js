@@ -3,7 +3,7 @@
 
 // Main Data Template for new files
 
-storage_format_version = 3
+storage_format_version = 4
 
 data_template  = {
     "storage_format_version": storage_format_version,
@@ -20,6 +20,7 @@ data_template  = {
     "exfiltration":[],
     "hosts":[],
     "investigators":[],
+    "evidence":[],
     "actions":[],
     "casenotes":[],
     "event_types":[

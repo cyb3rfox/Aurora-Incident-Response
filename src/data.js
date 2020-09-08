@@ -42,6 +42,8 @@ function syncAllChanges(){
     case_data.casenotes = w2ui.grd_casenotes.records
     w2ui.grd_investigators.save()
     case_data.investigators = w2ui.grd_investigators.records
+    w2ui.grd_evidence.save()
+    case_data.evidence = w2ui.grd_evidence.records
 
     // Data from the case Details popup is stored right to the storage object. So no need to update it here.
 
@@ -160,9 +162,11 @@ function newSOD() {
             w2ui.grd_actions.render()
             w2ui.grd_casenotes.clear()
             w2ui.grd_casenotes.render()
-
             w2ui.grd_investigators.clear()
             w2ui.grd_investigators.render()
+            w2ui.grd_evidence.clear()
+            w2ui.grd_evidence.render()
+
             currentfile = "";
             deactivateReadOnly()
             stopAutoUpdate()
@@ -222,15 +226,32 @@ function openSOD(){
 /////////////////////////////
 /**
  * These are The updates that need to be made to an older sod file. This functionality was first introduced with
- * Storage file version 3. So 2->3 is the first fix here. Whenever we update the storeage file format version we need
+ * Storage file version 3. So 2->3 is the first fix here. Whenever we update the storage file format version we need
  * to supply patches here to lift the old file format to the new file format.
  */
-function updateVersion(){
+function updateVersion(current_version){
 
     case_data.storage_format_version = storage_format_version
 
     // 2 -> 3
-    case_data.direction = [{id:1,text:"<-"},{id:2,text:"->"}]
+    if(current_version<3) {
+        case_data.direction = [{id: 1, text: "<-"}, {id: 2, text: "->"}]
+        casedata.killchain = [
+            {id: 1, text: 'Recon'},
+            {id: 2, text: 'Weaponization'},
+            {id: 3, text: 'Delivery'},
+            {id: 4, text: 'Exploitation'},
+            {id: 5, text: 'Installation'},
+            {id: 6, text: 'C2'},
+            {id: 7, text: 'Actions on Obj.'},
+        ]
+    }
+
+    // 3 -> 4
+    if(current_version<4) {
+        case_data.evidence = []
+    }
+
 
 
 }
@@ -353,7 +374,7 @@ function openSODFile() {
             else {
 
                 if(case_data.storage_format_version< storage_format_version){
-                    updateVersion()
+                    updateVersion(case_data.storage_format_version)
                 }
                 requestLock(true)
 

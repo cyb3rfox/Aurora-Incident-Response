@@ -26,6 +26,12 @@ function activateReadOnly(){
     w2ui.grd_actions.toolbar.disable("add","remove")
     w2ui.grd_casenotes.toolbar.disable("add","remove")
     w2ui.grd_investigators.toolbar.disable("add","remove")
+    w2ui.grd_evidence.toolbar.disable("add","remove")
+
+    //deactivate context menues
+    w2ui.grd_investigated_systems.menu.disable("to_tl")
+
+
 
     lockstate = "&#128274; locked"
     $( "#lock" ).html(lockstate)
@@ -42,6 +48,7 @@ function activateReadOnly(){
     writeprotect_grid(w2ui.grd_actions)
     writeprotect_grid(w2ui.grd_casenotes)
     writeprotect_grid(w2ui.grd_investigators)
+    writeprotect_grid(w2ui.grd_evidence)
 
     w2ui.grd_timeline.refresh()
     w2ui.grd_investigated_systems.refresh()
@@ -53,6 +60,10 @@ function activateReadOnly(){
     w2ui.grd_actions.refresh()
     w2ui.grd_casenotes.refresh()
     w2ui.grd_investigators.refresh()
+    w2ui.grd_evidence.refresh()
+
+
+
 
 
 }
@@ -79,6 +90,7 @@ function deactivateReadOnly(){
     w2ui.grd_actions.toolbar.enable("add","remove")
     w2ui.grd_casenotes.toolbar.enable("add","remove")
     w2ui.grd_investigators.toolbar.enable("add","remove")
+    w2ui.grd_evidence.toolbar.enable("add","remove")
 
     lockstate = "&#128272; open"
     $( "#lock" ).html(lockstate)
@@ -95,6 +107,7 @@ function deactivateReadOnly(){
     writeenable_grid(w2ui.grd_actions,config.grd_actions)
     writeenable_grid(w2ui.grd_casenotes,config.grd_casenotes)
     writeenable_grid(w2ui.grd_investigators,config.grd_investigators)
+    writeenable_grid(w2ui.grd_evidence,config.grd_evidence)
 
     //repropagate dropdowns
     w2ui.grd_timeline.getColumn('owner').editable.items = case_data.investigators
@@ -121,6 +134,7 @@ function deactivateReadOnly(){
     w2ui.grd_actions.refresh()
     w2ui.grd_casenotes.refresh()
     w2ui.grd_investigators.refresh()
+    w2ui.grd_evidence.refresh()
 
     //TODO: Make case data editable
 
@@ -194,6 +208,8 @@ function openMispAddMalwarePopup(recid) {
 
     filename = w2ui.grd_malware.get(recid).text
     path= w2ui.grd_malware.get(recid).path_on_disk
+
+    if(!path) path = ""
 
     fullpath= ""
 
