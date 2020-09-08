@@ -170,6 +170,8 @@ var config = {
             { field: 'event_type', caption: 'Event Type', type: 'list', options:{items:case_data.event_types} },
             { field: 'event_host', caption: 'Event System', type: 'text' },
             { field: 'event_source_host', caption: 'Source System', type: 'text'},
+            { field: 'killchain', caption: 'Killchain', type: 'list', options:{items:case_data.killchain}},
+            { field: 'notes', caption: 'Notes', type: 'text' },
             { field: 'attribution', caption: 'Attribution', type: 'text' }
         ],
         columns: [
@@ -241,6 +243,7 @@ var config = {
         multiSearch: true,
         searches: [
             { field: 'summary', caption: 'Summary', type: 'text' },
+            { field: 'hostname', caption: 'Hostname', type: 'text' },
             { field: 'analysis_status', caption: 'Analysis Status', type: 'list', options:{items:case_data.status} },
             { field: 'analyst', caption: 'Analyst', type: 'text'},
             { field: 'verdict', caption: 'Verdict', type: 'list', options:{items:case_data.verdicts} },
@@ -383,6 +386,7 @@ var config = {
             { field: 'account_name', caption: 'Account Name', type: 'text' },
             { field: 'domain', caption: 'Domain', type: 'text' },
             { field: 'context', caption: 'Context', type: 'text' },
+            { field: 'privileges', caption: 'Privileges', type: 'text' },
             { field: 'attribution', caption: 'Attribution', type: 'text' },
         ],
         columns: [
@@ -528,6 +532,8 @@ var config = {
             { field: 'text', caption: 'Hostname', type: 'text' },
             { field: 'os', caption: 'Operating System', type: 'text' },
             { field: 'system_type', caption: 'System Type', type: 'list', options:{items:case_data.system_types} },
+            { field: 'owner', caption: 'Owner', type: 'text' },
+            { field: 'description', caption: 'Description', type: 'text' },
         ],
         columns: [
             { field: 'text',sortable: true, caption: 'Hostname', size: '250px', editable: { type: 'text', min: 1, max: 100 } },
@@ -589,13 +595,21 @@ var config = {
             toolbar: true,
             footer: true
         },
+        multiSearch: true,
+        searches: [
+            { field: 'name', caption: 'Name', type: 'text' },
+            { field: 'description', caption: 'Description', type: 'text' },
+            { field: 'provider', caption: 'Provider', type: 'text' },
+            { field: 'location', caption: 'Location', type: 'text' },
+
+        ],
         columns: [
             { field: 'recid', sortable: true,caption: 'ID', size: '30px'},
             { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
             { field: 'name',sortable: true, caption: 'Name', size: '130px', editable: { type: 'text'}  },
             { field: 'description',sortable: true, caption: 'Description', size: '100%',editable: { type: 'text' }  },
             { field: 'size', sortable: true,caption: 'Size', size: '120px' , editable: { type: 'text' }},
-            { field: 'proivder', sortable: true,caption: 'Acquired/Provided', size: '120px' , editable: { type: 'text' }},
+            { field: 'provider', sortable: true,caption: 'Acquired/Provided', size: '120px' , editable: { type: 'text' }},
             { field: 'location', sortable: true,caption: 'Location', size: '120px' , editable: { type: 'text' }},
         ],
         toolbar: {
