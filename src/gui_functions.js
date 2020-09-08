@@ -138,7 +138,7 @@ function deactivateReadOnly(){
 function openAboutPopup() {
 
     w2popup.open({
-        title: 'About Auroa IR',
+        title: 'About Aurora IR',
         width: 900,
         height: 600,
         showMax: true,
