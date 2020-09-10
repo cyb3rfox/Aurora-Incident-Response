@@ -30,6 +30,9 @@ registerComponents = function(){
             case 'file:request_lock':
                 requestLock()
                 break;
+            case 'file:force_unlock':
+                forceUnLock()
+                break;
             case 'file:open_webdav':
                 test_webdav()
                 break;

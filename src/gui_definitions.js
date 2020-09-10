@@ -109,6 +109,7 @@ var config = {
                     { type: 'button', id: 'save_sod', text: 'Save Engagement', icon: 'fa fa-save' },
                     { type: 'button', id: 'release_lock', text: 'Release Lock', icon: 'fa fa-lock-open' },
                     { type: 'button', id: 'request_lock', text: 'Request Lock', icon: 'fa fa-key' },
+                    { type: 'button', id: 'force_unlock', text: 'Force Unlock', icon: 'fa fa-bomb' },
                 ]},
             { type: 'button', id: 'case_details', text: 'Case Configuration', icon: 'fa fa-cogs' },
             { type: 'menu', id: 'help', text: 'Help', icon: 'fa fa-question-circle', items: [

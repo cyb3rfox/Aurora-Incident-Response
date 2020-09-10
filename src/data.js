@@ -489,6 +489,42 @@ function requestLock() {
     saveSOD()
 }
 
+/**
+ * Forces the lock. Data could become inconsistent
+ */
+function forceUnLock() {
+
+    w2confirm('You are about to force-aqcuire the lock on the file. If anyone else still has the file opened it might lead to data loss', function btn(answer) {
+        if (answer == "No") {
+            return
+        }
+        else{
+
+            if (updateSOD() == false) {
+                activateReadOnly()
+                w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again")
+                return
+            }
+
+            stopAutoUpdate()
+            startAutoSave()
+            deactivateReadOnly()
+            lockstate = "&#128272; open"
+            $( "#lock" ).html(lockstate)
+            lockedByMe = true
+            case_data.locked=true
+
+            saveSOD()
+
+
+
+        }
+
+    })
+
+
+}
+
 
 
 
