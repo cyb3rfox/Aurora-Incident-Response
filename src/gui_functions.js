@@ -367,15 +367,70 @@ function timeline2vis(tl){
 
         classname = ""
 
-        if (tl[i].event_type=="Exfil") {     //TODO: make coloring a settings option
-            classname="exfil"
+        if (tl[i].event_type == "EventLog") {     //TODO: make coloring a settings option
+            classname = "log"
         }
-        else if (tl[i].event_type=="Engagement") {
-
-            classname="engagement"
+        else if (tl[i].event_type == "File") {
+            classname = "file"
+        }
+        else if (tl[i].event_type == "Human") {
+            classname = "human"
+        }
+        else if (tl[i].event_type == "Engagement") {
+            classname = "engagement"
+        }
+        else if (tl[i].event_type == "Lateral Movement") {
+            classname = "lateral"
+        }
+        else if (tl[i].event_type == "Exfil") {
+            classname = "exfil"
+        }
+        else if (tl[i].event_type == "Tanium Trace") {
+            classname = "tanium"
+        }
+        else if (tl[i].event_type == "Malware") {
+            classname = "malware"
+        }
+        else if (tl[i].event_type == "eMail") {
+            classname = "email"
+        }
+        else if (tl[i].event_type == "Misc") {
+            classname = "misc"
         }
 
-        vis_array.push({id: vis_array.length, content: event_data, start:start.toString(),className:classname})
+        if (tl[i].event_host == "") {
+            host = "N/A"
+        } else {
+            host = tl[i].event_host
+        }
+        if (tl[i].event_source_host == "") {
+            source_host = "N/A"
+        } else {
+            source_host = tl[i].event_source_host
+        }
+
+        if (tl[i].direction == "<-") {
+            systems = host + " ← " + source_host
+        } else if (tl[i].direction == "->") {
+            systems = host + " → " + source_host
+        } else {
+            systems = host + " | " + source_host
+        }
+
+        if (tl[i].event_type) {
+            event_type = "<b>[" + tl[i].event_type + "]</b> "
+        } else {
+            event_type = ""
+        }
+
+        vis_array.push(
+            {
+                id: vis_array.length,
+                content: event_type + systems + "<br><small>" + event_data + "</small>",
+                start: start.toString(),
+                className: classname
+            }
+        )
     }
 
     return vis_array
@@ -386,7 +441,6 @@ function timeline2vis(tl){
  * Display a visual timeline in main
  */
 function showTimelineView(){
-
     syncAllChanges()
     w2ui.main_layout.content('main', '<div stlye="padding:10px;padding-top:30px;margin:10px" id="graph"></div>');
     var container = document.getElementById('graph');
@@ -397,12 +451,11 @@ function showTimelineView(){
     if(data.length==0){
         $('#graph').html("No Timestamps to display. Add Timestamps to the timeline first and mark them as Visualizable")
     }
+
     var dataset = new vis.DataSet(data)
 
     // Create a Timeline
-    var timeline = new vis.Timeline(container , dataset, options);
-
-
+    var timeline = new vis.Timeline(container, dataset, options);
 }
 
 

@@ -6,7 +6,6 @@ html,body { height: 100%;width:100%; margin: 0px; padding: 0px; }
 
     height:600px;
     font-size: 12pt;
-
 }
 
 .vis-item {
@@ -17,15 +16,49 @@ html,body { height: 100%;width:100%; margin: 0px; padding: 0px; }
     box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
 }
 
-.vis-item.exfil {
-    background-color: darkred;
-    border-color: white;
+.vis-item.log {
+    background-color: limegreen;
+    border-color: darkseagreen;
+}
+
+.vis-item.file {
+    background-color: gold;
+    border-color: goldenrod;
+}
+
+.vis-item.human {
+    background-color: palevioletred;
+    border-color: chocolate;
 }
 
 .vis-item.engagement {
     background-color: lightskyblue;
-    border-color: white;
+    border-color: dimgrey;
 }
+.vis-item.lateral {
+    background-color: lightseagreen;
+    border-color: darkcyan;
+}
+
+.vis-item.exfil {
+    background-color: plum;
+    border-color: mediumorchid;
+}
+
+.vis-item.tanium {
+    background-color: palevioletred;
+    border-color: darkred;
+}
+
+.vis-item.malware {
+    background-color: firebrick;
+    border-color: darkred;
+}
+.vis-item.misc {
+    background-color: darksalmon;
+    border-color: indianred;
+}
+
 
 .vis-item,
 .vis-item.vis-line {
