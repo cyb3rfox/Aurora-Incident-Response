@@ -145,6 +145,7 @@ registerComponents = function(){
             case 'vis_timeline':
                 showTimelineView()
                 break;
+                
             case 'lateral':
                 showLateralMovement()
                 break;

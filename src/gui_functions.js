@@ -9,7 +9,6 @@
  * Change to GUI to read only mode when the user does not have the lock
  */
 function activateReadOnly(){
-
     //deactivate save button
     w2ui['toolbar'].disable('file:save_sod');
     w2ui['toolbar'].disable('file:release_lock');
@@ -41,9 +40,6 @@ function activateReadOnly(){
     deactivate_all_context_items(w2ui.grd_actions.menu)
     deactivate_all_context_items(w2ui.grd_casenotes.menu)
 
-
-
-
     lockstate = "&#128274; locked"
     $( "#lock" ).html(lockstate)
 
@@ -72,11 +68,6 @@ function activateReadOnly(){
     w2ui.grd_casenotes.refresh()
     w2ui.grd_investigators.refresh()
     w2ui.grd_evidence.refresh()
-
-
-
-
-
 }
 
 
@@ -84,7 +75,6 @@ function activateReadOnly(){
  * Change to gui to read only mode when the user does not have the lock
  */
 function deactivateReadOnly(){
-
     //deactivate save button
     w2ui['toolbar'].enable('file:save_sod');
     w2ui['toolbar'].enable('file:release_lock');
@@ -161,8 +151,6 @@ function deactivateReadOnly(){
     w2ui.grd_evidence.refresh()
 
     //TODO: Make case data editable
-
-
 }
 
 
@@ -194,12 +182,9 @@ function openAboutPopup() {
  * Show case Details
  */
 function openCasePopup() {
-
-    if(case_data.locked && !lockedByMe){
-
+    if (case_data.locked && !lockedByMe){
         alert("Can't change case data when the file is locked.")
         return;
-
     }
     w2ui.case_form.record['caseid']=case_data.case_id
     w2ui.case_form.record['client']=case_data.client
@@ -236,11 +221,10 @@ function openCasePopup() {
  * @param recid -record id of right clicked record.
  */
 function openMispAddMalwarePopup(recid) {
-
     filename = w2ui.grd_malware.get(recid).text
     path= w2ui.grd_malware.get(recid).path_on_disk
 
-    if(!path) path = ""
+    if (!path) path = ""
 
     fullpath= ""
 
@@ -255,8 +239,8 @@ function openMispAddMalwarePopup(recid) {
 
     //check what type of hash it is
     hashtype = "md5"
-    if(hash.length == 40) hashtype = "sha1"
-    if(hash.length == 64) hashtype = "sha256"
+    if (hash.length == 40) hashtype = "sha1"
+    if (hash.length == 64) hashtype = "sha256"
 
 
     records = [ {recid:1, aurora_field_type:"Filename",misp_field_type:"filename",value:filename,comment:notes},
@@ -297,28 +281,57 @@ function openMispAddMalwarePopup(recid) {
  * @param recid -record id of right clicked record.
  */
 function openMispAddNetworkPopup(recid) { //TODO: code for network misp
-
-
-
     domainname = w2ui.grd_network.get(recid).domainname
     ip = w2ui.grd_network.get(recid).ip
     port = w2ui.grd_network.get(recid).port
     notes = w2ui.grd_network.get(recid).context
 
-    ip_port = ip+"|"+port
+    ip_port = ip + "|" + port
 
     records = []
 
-    if(domainname) records.push({recid:records.length+1, aurora_field_type:"Domain Name",misp_field_type:"domain",value:domainname,comment:notes})
-    if(ip) records.push({recid:records.length+1, aurora_field_type:"IP",misp_field_type:"ip-dst",value:ip,comment:notes})
-    if(ip && domainname) records.push({recid:records.length+1, aurora_field_type:"Domain IP",misp_field_type:"domain|ip",value:domainname+"|"+ip,comment:notes})
-    if(ip && port) records.push({recid:records.length+1, aurora_field_type:"IP Port",misp_field_type:"ip-dst|port",value:ip+"|"+port,comment:notes})
-
-
+    if (domainname) {
+        records.push({
+            recid: records.length+1,
+            aurora_field_type: "Domain Name",
+            misp_field_type: "domain",
+            value: domainname,
+            comment:notes
+        })
+    }
+    
+    if (ip) {
+        records.push({
+            recid: records.length + 1,
+            aurora_field_type: "IP",
+            misp_field_type: "ip-dst",
+            value: ip,
+            comment: notes
+        })
+    }
+    
+    if (ip && domainname) {
+        records.push({
+            recid:records.length + 1,
+            aurora_field_type: "Domain IP",
+            misp_field_type: "domain|ip",
+            value: domainname + "|" + ip,
+            comment: notes
+        })
+    }
+    
+    if (ip && port) {
+        records.push({
+            recid: records.length + 1,
+            aurora_field_type: "IP Port",
+            misp_field_type: "ip-dst|port",
+            value: ip + "|" + port,
+            comment:notes
+        })
+    }
 
     w2ui.grd_add_misp.records = records
     w2ui.grd_add_misp.refresh()
-
 
     w2popup.open({
         title: 'Add to MISP',
@@ -331,7 +344,6 @@ function openMispAddNetworkPopup(recid) { //TODO: code for network misp
                 $('#w2ui-popup #main').w2render('popup_layout')
                 //render grid into form
                 w2ui.popup_layout.content('main', w2ui.grd_add_misp);
-
             };
         },
         onToggle: function (event) {
@@ -353,17 +365,19 @@ function openMispAddNetworkPopup(recid) { //TODO: code for network misp
  * @returns {Array} - vis.js object
  */
 function timeline2vis(tl){
-
     var vis_array=[]
 
     for(var i=0; i< tl.length;i++) {
-
         visual = tl[i].visual;
-        if (!visual) continue;
+        if (!visual) {
+            continue;
+        }
         event_data = tl[i].event_data;
         start = tl[i].date_time;
 
-        if(!start) continue; // can't display something without timestamp in a timeline
+        if (!start) {
+            continue;
+        } // can't display something without timestamp in a timeline
 
         classname = ""
 
@@ -434,7 +448,6 @@ function timeline2vis(tl){
     }
 
     return vis_array
-
 }
 
 /**
@@ -442,20 +455,23 @@ function timeline2vis(tl){
  */
 function showTimelineView(){
     syncAllChanges()
-    w2ui.main_layout.content('main', '<div stlye="padding:10px;padding-top:30px;margin:10px" id="graph"></div>');
-    var container = document.getElementById('graph');
-    // Configuration for the Timeline
-    var options = {};
+    w2ui.main_layout.content(
+        'main', 
+        '<div style="height:100%;width:100%" id="graph"></div>');
 
     data = timeline2vis(case_data.timeline)
-    if(data.length==0){
-        $('#graph').html("No Timestamps to display. Add Timestamps to the timeline first and mark them as Visualizable")
+    if (data.length == 0){
+        $('#graph').html("<div style='align-items: center;'><center><h2>No events to display</h2><p>Add new events in the timeline tab first and mark them as 'Visualizable' to show them here.</p></center></div>")
+    } else {
+        var container = document.getElementById('graph');
+        var dataset = new vis.DataSet(data)
+
+        // Configuration for the Timeline
+        var options = {};
+
+        // Create a Timeline
+        var timeline = new vis.Timeline(container, dataset, options);
     }
-
-    var dataset = new vis.DataSet(data)
-
-    // Create a Timeline
-    var timeline = new vis.Timeline(container, dataset, options);
 }
 
 
@@ -465,90 +481,156 @@ function showTimelineView(){
 
 /**
  * Generates the data object for vis.js
+ * @param systems
+ * @param target_host
+ * @returns {"string"}|*}
+ */
+function getHostIP(systems, target_host) {
+    for (var i=0; i < systems.length; i++) {
+        if (systems[i].text == target_host) {
+            if (systems[i].ip == null) {
+                return "N/F"
+            } else {
+                return systems[i].ip
+            }
+        }
+    }
+    return "N/F"
+}
+
+/**
+ * Generates the data object for vis.js
+ * @param systems
+ * @param target_host
+ * @returns {"string"}|*}
+ */
+function getHostType(systems, target_host) {
+    for (var i=0; i < systems.length; i++) {
+        if (systems[i].text == target_host) {
+            return systems[i].system_type
+        }
+    }
+    return "Other"
+}
+
+/**
+ * Generates the data object for vis.js
  * @param data
  * @returns {{nodes: Array, edges: Array}|*}
  */
-function getLateralMovement(data){
-
+function getLateralMovements(data){
     var nodes = []
     var edges = []
 
-    var hosts = []
-    for(var i=0; i< data.length;i++) {
+    var hosts = []      // Stores the label for host i-th
+    var types = []      // Stores the type of host i-th
+    
 
-        if(data[i].event_type=="Lateral Movement" || data[i].event_type=="Exfil"){
-
-            // both hosts need to be set
-            if(data[i].event_host == null || data[i].event_source_host == null) continue;
-
-            //add host 1
-            host1 = data[i].event_host
-            idx1 = hosts.indexOf(host1)
-            if(idx1==-1){
-                hosts.push(host1)
-                idx1 = hosts.length -1
-            }
-
-            //add host 2
-            host2 = data[i].event_source_host
-            idx2 = hosts.indexOf(host2)
-            if(idx2==-1){
-                hosts.push(host2)
-                idx2 = hosts.length -1
-            }
-
-            //figure out direction
-            direction = data[i].direction
-            source = 0;
-            destination = 0;
-            //from 1 > 2
-            if(direction == "->"){
-
-
-                source = idx1
-                destination = idx2
-            }
-            else{
-                //from 2 > 1
-
-                source = idx2
-                destination = idx1
-            }
-
-            //check if edge exists and add to weight
-            existing = false
-            for(var j = 0; j< edges.length; j++){
-
-                if(edges[j].from == source && edges[j].to == destination  ) {
-                    edges[j].value++;
-                    existing = true
-                    continue
-                }
-            }
-            if(existing) continue
-
-            //add connection
-
-
-            // color lateral and exfil diffeerntly
-            color="#cccccc"
-            if(data[i].event_type=="Exfil"){
-                color="#f00000"
-            }
-
-
-            entry = {from:source, to:destination, arrows:{to :true}, value:1 ,color:{color:color}}
-            edges.push(entry)
+    for (var i=0; i < data.timeline.length; i++) {
+        // Only add when both hosts need to be set
+        if (data.timeline[i].event_host == null || data.timeline[i].event_source_host == null) {
+            continue;
         }
+
+        // Add hosts 
+        // ---------
+
+        // Add host 1
+        host1 = data.timeline[i].event_host
+        idx1 = hosts.indexOf(host1)
+
+        if (idx1 == -1){
+            hosts.push(host1)
+            types.push(getHostType(data.systems, host1))
+            idx1 = hosts.length - 1
+        }
+
+        // Add host 2
+        host2 = data.timeline[i].event_source_host
+        idx2 = hosts.indexOf(host2)
+        if (idx2 == -1){
+            hosts.push(host2)
+            types.push(getHostType(data.systems, host2))
+            idx2 = hosts.length - 1
+        }
+
+        // Figure out direction
+        direction = data.timeline[i].direction
+
+        source = 0;
+        destination = 0;
+        if (direction == "->") {
+            //from 1 > 2
+            source = idx1
+            destination = idx2
+        }
+        else {
+            //from 2 > 1
+            source = idx2
+            destination = idx1
+        }
+
+        // Add connections
+        // --------------
+
+        // color lateral and exfil differently
+        color = "#cccccc"
+        
+        if (data.timeline[i].event_type == "EventLog") {
+            color = "limegreen"
+        } else if (data.timeline[i].event_type == "File") {
+            color = "gold"
+        } else if (data.timeline[i].event_type == "Human") {
+            color = "palevioletred"
+        } else if (data.timeline[i].event_type == "Engagement") {
+            color = "lightskyblue"
+        } else if (data.timeline[i].event_type == "Lateral Movement") {
+            color = "lightseagreen"
+        } else if (data.timeline[i].event_type == "Exfil") {
+            color = "plum"
+        } else if (data.timeline[i].event_type == "Tanium Trace") {
+            color = "palevioletred"
+        } else if (data.timeline[i].event_type == "Malware") {
+            color = "firebrick"
+        } else if (data.timeline[i].event_type == "eMail") {
+            color = "dodgerblue"
+        } else if (data.timeline[i].event_type == "Misc") {
+            color = "darksalmon"
+        }
+
+        entry = {
+            from: source, 
+            to: destination, 
+            arrows: {
+                enabled: true,
+                type: 'vee',
+                to: { enabled: true }
+            }, 
+            value: 1,
+            smooth: "discrete",
+            length: 300,
+            color: {
+                color: color
+            },
+            title: "<center><b>[" + data.timeline[i].event_type + "]</b> " + data.timeline[i].date_time + "<br><small>" + data.timeline[i].event_data + "</small></center>"
+        }
+        edges.push(entry)
     }
 
-    //build nodes array
-    for(var i = 0; i < hosts.length;i++){
-        entry = {id: i , label: hosts[i], group:'computer'}
+    // Build nodes array
+    for (var i = 0; i < hosts.length;i++){
+        entry = {
+            id: i, 
+            label: "\n" + hosts[i] + "\n" + getHostIP(data.systems, hosts[i]),
+            group: types[i]
+        }
         nodes.push(entry)
     }
 
-    result={nodes:nodes,edges:edges}
+    result = {
+        nodes: nodes, 
+        edges:edges
+    }
 
     return result
 }
@@ -557,29 +639,116 @@ function getLateralMovement(data){
  * Prepare and display the lateral movement view
  */
 function showLateralMovement(){
-
     syncAllChanges()
-    data = getLateralMovement(case_data.timeline)
+    w2ui.main_layout.content(
+        'main', 
+        '<div style="height:100%;width:100%" id="graph"></div>'
+    )
 
-    w2ui.main_layout.content('main', '<div stlye="height:100%;width:100%" id="graph"></div>');
-    var container = document.getElementById('graph');
-    // Configuration for the Timeline
-    var options = {
-        groups: {
-            computer: {
-                shape: 'icon',
-                icon: {
-                    face: '"Font Awesome 5 Free"',
-                    code: '\uf108',
-                    size: 35,
-                    color: '#cccccc'
+    data = getLateralMovements(case_data)
+    if (data.nodes.length == 0){
+        $('#graph').html("<div style='align-items: center;'><center><h2>No events to display</h2><p>Add new events in the timeline tab first and mark them as 'Visualizable' to show them here.</p></center></div>")
+    } else {
+        var container = document.getElementById('graph')
+        
+        // Configuration for the Timeline
+        var options = {
+            edges: {},
+            nodes: {
+                font: {
+                    size: 14
+                }
+            },
+            groups: {
+                "Desktop": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        code: '\uf109',
+                        size: 50,
+                        color: 'cadetblue'
+                    }
+                },
+                "Server": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        code: '\uf233',
+                        size: 50,
+                        color: 'coral'
+                    }
+                },
+                "Phone": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        weight: "bold",
+                        code: "\uf10b",
+                        size: 50,
+                        color: 'crimson'
+                    }
+                },
+                "Tablet": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        weight: "bold",
+                        code: "\uf10a",
+                        size: 50,
+                        color: 'blueviolet'
+                    }
+                },
+                "TV": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        weight: "bold",
+                        code: "\uf26c",
+                        size: 50,
+                        color: 'darkgoldenrot'
+                    }
+                },
+                "Networking device": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        weight: "bold",
+                        code: "\uf0c2",
+                        size: 50,
+                        color: 'darkblue'
+                    }
+                },
+                "IoT device": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        code: "\uf2db",
+                        size: 50,
+                        color: 'darkorchid'
+                    }
+                },
+                "Other": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        code: "\uf1e6",
+                        size: 50,
+                        color: 'dimgray'
+                    }
                 }
             }
         }
+
+        var network = new vis.Network(container, data, options);
     }
-
-    var network = new vis.Network(container, data, options);
-
 }
 
 
@@ -601,14 +770,13 @@ timeseries_labels = ["00:00-01:00", "01:00-02:00", "02:00-03:00", "03:00-04:00",
  * @returns {number[]} - Number of events
  */
 function getActivity(tl){
-
     var buckets = [
         0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
     ]
 
     for(var i = 0; i < tl.length; i++){
 
-        if(tl[i].event_type == "Engagement Management") continue; // That's not the attacker working, so we don't want to have it in our histogram
+        if (tl[i].event_type == "Engagement Management") continue; // That's not the attacker working, so we don't want to have it in our histogram
 
         var date = new Date(tl[i].date_time)
         hour = date.getHours()
@@ -619,20 +787,16 @@ function getActivity(tl){
     console.log(buckets)
 
     return buckets
-
 }
-
 
 
 /**
  * * Loads the activity plot into main
  */
 function showActivityPlot(){
-
-
     syncAllChanges()
 
-    w2ui.main_layout.content('main', '<div style="width:100%;height:400px,position: relative" ><canvas id="chart"></canvas></div>');
+    w2ui.main_layout.content('main', '<div style="width:100%;height:100%,position: relative" ><canvas id="chart"></canvas></div>');
     var chart = document.getElementById('chart');
     data = getActivity(case_data.timeline)
 
@@ -657,9 +821,7 @@ function showActivityPlot(){
             }
         }
     })
-
 }
-
 
 
 //////////////////////////////////
@@ -671,9 +833,8 @@ function showActivityPlot(){
  * @param grid - w2ui grid object
  */
 function writeprotect_grid(grid) {
-
-    for(i= 0; i< grid.columns.length;i++){ //disable inline editing for all columns of the grid
-        grid.columns[i].editable=null
+    for (i = 0; i < grid.columns.length; i++){ //disable inline editing for all columns of the grid
+        grid.columns[i].editable = null
     }
     grid.refresh()
 }
@@ -683,9 +844,8 @@ function writeprotect_grid(grid) {
  * @param grid - grid to reanable
  * @param template - template to get the editables from
  */
-function writeenable_grid(grid,template){
-
-    for(i= 0; i< grid.columns.length;i++){ //disable inline editing for all columns of the grid
+function writeenable_grid(grid, template){
+    for (i = 0; i < grid.columns.length; i++){ //disable inline editing for all columns of the grid
         grid.columns[i].editable = template.columns[i].editable
     }
     grid.refresh()
@@ -696,10 +856,9 @@ function writeenable_grid(grid,template){
  * @param menu
  */
 function deactivate_all_context_items(menu){
-
-    if(menu==null) return;
-    for(i=0;i<menu.length;i++){
-        menu[i].disabled=true
+    if (menu == null) return;
+    for (i = 0; i < menu.length; i++){
+        menu[i].disabled = true
     }
 }
 
@@ -708,9 +867,8 @@ function deactivate_all_context_items(menu){
  * @param menu
  */
 function activate_all_context_items(menu){
-
-    if(menu==null) return;
-    for(i=0;i<menu.length;i++){
-        menu[i].disabled=false
+    if (menu == null) return;
+    for (i = 0; i < menu.length; i++){
+        menu[i].disabled = false
     }
 }
