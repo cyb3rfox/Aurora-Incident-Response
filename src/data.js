@@ -302,7 +302,7 @@ function saveSODFile(){
 
 
     var fs = require("fs");
-    var buffer = new Buffer.from(JSON.stringify(case_data));
+    var buffer = new Buffer.from(JSON.stringify(case_data,null, "\t"));
     fs.writeFileSync(currentfile.toString(), buffer);
 
     var today = new Date();
@@ -437,7 +437,7 @@ function lockSOD(){ // check if it is still needed - switched everything over to
     case_data.locked=true
     lockedByMe = true
     var fs = require("fs");
-    var buffer = new Buffer.from(JSON.stringify(case_data));
+    var buffer = new Buffer.from(JSON.stringify(case_data,null, "\t"));
     fs.writeFileSync(currentfile.toString(), buffer);
     deactivateReadOnly()
     saveSOD()
