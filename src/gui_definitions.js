@@ -187,7 +187,7 @@ var config = {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
                 }},
-            { field: 'direction',sortable: true, caption: '<>', size: '40px', editable: { type: 'list', items: case_data.direction, showAll: true ,  match: 'contains' },
+            { field: 'direction',sortable: true, caption: '⇄', size: '40px', editable: { type: 'list', items: case_data.direction, showAll: true ,  match: 'contains' },
                 render: function (record, index, col_index) {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
