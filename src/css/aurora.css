@@ -35,6 +35,7 @@ html,body { height: 100%;width:100%; margin: 0px; padding: 0px; }
     background-color: lightskyblue;
     border-color: dimgrey;
 }
+
 .vis-item.lateral {
     background-color: lightseagreen;
     border-color: darkcyan;
@@ -54,6 +55,12 @@ html,body { height: 100%;width:100%; margin: 0px; padding: 0px; }
     background-color: firebrick;
     border-color: darkred;
 }
+
+.vis-item.email {
+    background-color: dodgerblue;
+    border-color: darkslateblue;
+}
+
 .vis-item.misc {
     background-color: darksalmon;
     border-color: indianred;

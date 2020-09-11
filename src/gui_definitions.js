@@ -131,23 +131,23 @@ var config = {
         bottomHTML : '<div id="lock" style="background-color: #eee; padding: 10px 5px; border-top: 1px solid silver">&#128272; open</div>',
         nodes: [
             { id: 'investigation', text: 'Investigation', group: true, expanded: true, nodes: [
-                    { id: 'timeline', text: 'Timeline', icon: 'fa fa-clock'},
-                    { id: 'investigated_systems', text: 'Investigated Systems', icon: 'fa fa-bullseye' },
-                    { id: 'malware', text: 'Malware/Tools', icon: 'fa fa-skull-crossbones'},
+                    { id: 'timeline', text: 'Timeline', icon: 'fa fa-clock-o'},
+                    { id: 'investigated_systems', text: 'Investigated Systems', icon: 'fa fa-search-plus' },
+                    { id: 'malware', text: 'Malware/Tools', icon: 'fa fa-bug'},
                     { id: 'accounts', text: 'Compromised Accounts', icon: 'fa fa-users'},
-                    { id: 'network', text: 'Network Indicators', icon: 'fa fa-network-wired'},
-                    { id: 'exfiltration', text: 'Exfiltration', icon: 'fa fa-file-export'},
+                    { id: 'network', text: 'Network Indicators', icon: 'fa fa-sitemap'},
+                    { id: 'exfiltration', text: 'Exfiltration', icon: 'fa fa-tint'},
                     { id: 'systems', text: 'Systems', icon: 'fa fa-desktop'},
                 ]},
             { id: 'reporting', text: 'Reporting', group: true, expanded: true, nodes: [
-                    { id: 'vis_timeline', text: 'Visual Timeline', icon: 'fa fa-chart-line'},
-                    { id: 'lateral', text: 'Lateral Movement', icon: 'fa fa-network-wired'},
-                    { id: 'activity', text: 'Activity Plot', icon: 'fa fa-chart-bar'}
+                    { id: 'vis_timeline', text: 'Visual Timeline', icon: 'fa fa-calendar-o'},
+                    { id: 'lateral', text: 'Lateral Movement', icon: 'fa fa-share-alt'},
+                    { id: 'activity', text: 'Activity Plot', icon: 'fa fa-bar-chart'}
                 ]},
             { id: 'case_management', text: 'Case Management', group: true, expanded: true, nodes: [
                     { id: 'investigators', text: 'Investigators', icon: 'fa fa-user'},
-                    { id: 'evidence', text: 'Evidence', icon: 'fa fa-briefcase'},
-                    { id: 'actions', text: 'Action Items', icon: 'fa fa-clipboard-list'},
+                    { id: 'evidence', text: 'Evidence', icon: 'fa fa-gavel'},
+                    { id: 'actions', text: 'Action Items', icon: 'fa fa-briefcase'},
                     { id: 'casenotes', text: 'Case Notes', icon: 'fa fa-sticky-note'},
                 ]
             },
