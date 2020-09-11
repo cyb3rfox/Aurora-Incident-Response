@@ -13,7 +13,7 @@ global.Dirty = {
 function createWindow () {
     // Create the browser window.
     win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.ico'})
-    win.setMenuBarVisibility(false)
+    //win.setMenuBarVisibility(false)
 
     // and load the index.html of the app.
     win.loadFile('index.html')
