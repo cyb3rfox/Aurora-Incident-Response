@@ -600,6 +600,56 @@ function stopAutoUpdate(){
 ///// IPC /////
 ///////////////
 
+function updateSystems(event){
+    old_system = event.value_original
+    new_system = event.value_new
+
+    //check timeline
+    records = w2ui.grd_timeline.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].event_host
+        system2 = records[i].event_source_host
+
+        if(system1 == old_system) records[i].event_host=new_system
+        if(system2 == old_system) records[i].event_source_host=new_system
+    }
+
+    //check investigated systems
+    records = w2ui.grd_investigated_systems.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].hostname
+
+        if(system1 == old_system) records[i].hostname=new_system
+
+    }
+
+    //check malware
+    records = w2ui.grd_malware.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].hostname
+
+        if(system1 == old_system) records[i].hostname=new_system
+
+    }
+
+    //Check exfil
+    records = w2ui.grd_exfiltration.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].stagingsystem
+        system2 = records[i].original
+        system3 = records[i].exfil_to
+
+        if(system1 == old_system) records[i].stagingsystem=new_system
+        if(system2 == old_system) records[i].original=new_system
+        if(system3 == old_system) records[i].exfil_to=new_system
+
+    }
+}
+
+///////////////
+///// IPC /////
+///////////////
+
 function cleanup (){
 
     if(case_data.locked && lockedByMe){

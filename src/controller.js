@@ -457,6 +457,9 @@ registerComponents = function(){
         }
     }
 
+    w2ui.grd_systems.onChange = updateSystems
+
+
     ///////////////////
     // Investigators //
     ///////////////////

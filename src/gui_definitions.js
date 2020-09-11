@@ -472,7 +472,7 @@ var config = {
         ],
         multiSearch: true,
         searches: [
-            { field: 'staging', caption: 'Staging System', type: 'text' },
+            { field: 'stagingsystem', caption: 'Staging System', type: 'text' },
             { field: 'original', caption: 'Original System', type: 'text' },
             { field: 'filename', caption: 'Filename', type: 'text' },
             { field: 'size', caption: 'Size', type: 'int' },
