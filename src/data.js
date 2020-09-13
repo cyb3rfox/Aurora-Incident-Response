@@ -235,6 +235,7 @@ function updateVersion(current_version){
 
     // 2 -> 3
     if(current_version<3) {
+
         case_data.direction = [{id: 1, text: "<-"}, {id: 2, text: "->"}]
         casedata.killchain = [
             {id: 1, text: 'Recon'},
@@ -253,6 +254,9 @@ function updateVersion(current_version){
     }
 
     // 4 -> 5
+    if(current_version<5) {
+
+
     case_data.system_types =[
         {id:1,text:"Desktop"},
         {id:2,text:"Server"},
@@ -261,8 +265,14 @@ function updateVersion(current_version){
         {id:5,text:"TV"},
         {id:6,text:"Networking device"},
         {id:7,text:"IoT device"},
-        {id:8,text:"Other"}
+        {id:8,text:"Other"},
+        {id:8,text:"Attacker Infra"}
     ]
+
+    case_data.event_types.push({id:11, text:"C2"})
+    }
+
+    case_data.storage_format_version = 5
 
 
 }

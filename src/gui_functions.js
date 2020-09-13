@@ -489,13 +489,13 @@ function getHostIP(systems, target_host) {
     for (var i=0; i < systems.length; i++) {
         if (systems[i].text == target_host) {
             if (systems[i].ip == null) {
-                return "N/F"
+                return "N/A"
             } else {
                 return systems[i].ip
             }
         }
     }
-    return "N/F"
+    return "N/A"
 }
 
 /**
@@ -596,6 +596,8 @@ function getLateralMovements(data){
             color = "dodgerblue"
         } else if (data.timeline[i].event_type == "Misc") {
             color = "darksalmon"
+        } else if (data.timeline[i].event_type == "C2") {
+            color = "lightgrey"
         }
 
         entry = {
@@ -742,6 +744,16 @@ function showLateralMovement(){
                         code: "\uf1e6",
                         size: 50,
                         color: 'dimgray'
+                    }
+                },
+                "Attacker Infra": {
+                    shape: 'icon',
+                    icon: {
+                        //face: "'Font Awesome 5 Free'",
+                        face: "FontAwesome",
+                        code: "\uf21b",
+                        size: 50,
+                        color: 'black'
                     }
                 }
             }
