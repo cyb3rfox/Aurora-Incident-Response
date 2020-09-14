@@ -528,7 +528,7 @@ function getLateralMovements(data){
 
     for (var i=0; i < data.timeline.length; i++) {
         // Only add when both hosts need to be set
-        if (data.timeline[i].event_host == null || data.timeline[i].event_source_host == null) {
+        if (data.timeline[i].event_host == null || data.timeline[i].event_source_host == null || data.timeline[i].event_host == "" || data.timeline[i].event_source_host == "") {
             continue;
         }
 
