@@ -606,13 +606,15 @@ function stopAutoUpdate(){
 
 
 
-///////////////
-///// IPC /////
-///////////////
+/////////////////////////////
+///// Systems Management ////
+/////////////////////////////
 
 function updateSystems(event){
     old_system = event.value_original
     new_system = event.value_new
+
+    if(old_system=="" || old_system==null) return; // don't override all fields with new values when the old value was an empty field
 
     //check timeline
     records = w2ui.grd_timeline.records
@@ -620,7 +622,7 @@ function updateSystems(event){
         system1 = records[i].event_host
         system2 = records[i].event_source_host
 
-        if(system1 == old_system) records[i].event_host=new_system
+        if(system1 == old_system ) records[i].event_host=new_system
         if(system2 == old_system) records[i].event_source_host=new_system
     }
 
