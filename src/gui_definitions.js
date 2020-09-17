@@ -116,6 +116,7 @@ var config = {
                     { type: 'button', id: 'online_help', text: 'Online Help', icon: 'fa fa-globe' },
                     { type: 'button', id: 'about', text: 'About', icon: 'fa fa-info' },
                 ]},  { type: 'spacer' },
+            //{ type: 'html',html:"<img onclick=\"browser_open('https://www.infoguard.ch/')\" src='img/ig.png' style='height:30px'>&nbsp;<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
             { type: 'html',html:"<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
 
         ],
