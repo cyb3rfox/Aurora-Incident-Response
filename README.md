@@ -7,7 +7,9 @@ with keeping control over all the findings. That does not only prevent them from
 It's intended to be used in small and big incident response investigations to track findings, tasks, making reporting easy and generally stay on top of the game. The current version has been battle tested multiple times now. 
 I'll keep fixing bugs and ading features as we go, but please remember, it's a leisure time project. So any help is appreciated.
 
+Lateral Movement
 ![alt text](./images/lateral.png "Lateral Movement Visualization")
+Visual Timeline
 ![alt text](./images/timeline.png "Visual Timeline")
 
 
