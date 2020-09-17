@@ -18,6 +18,10 @@ You can download the current release of Aurora Incident Response from the [Relea
 Aurora Incident Response is available for MacOS, Windows and Linux. We are working on making it available for
 iPads and Android tablets as well.
 
+Here's a video on how to use Aurora:
+
+[![](http://img.youtube.com/vi/2j2XYcqQIm0/0.jpg)](http://www.youtube.com/watch?v=2j2XYcqQIm0 "")
+
 ## 2 Development
 
 If you want to contribute, you are encouraged to do so. I'd totally like to see the tool growing. 
