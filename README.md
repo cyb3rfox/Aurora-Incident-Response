@@ -1,9 +1,15 @@
 # Aurora Incident Response
 
 Incident Response Documentation made easy. Developed by Incident Responders for Incident Responders.
-Aurora brings "Spreadsheet of Doom" used in the SANS FOR508 class to the next level. 
+Aurora brings "Spreadsheet of Doom" used in the SANS FOR508 class to the next level. Having led many cases and taught so many students how to do IR right, I realized, that many struggle
+with keeping control over all the findings. That does not only prevent them from seeing what they already have, but even less so what they are missing. 
 
-It's intended to be used in small and big incident response investigations to track findings, tasks, making reporting easy and generally stay on top of the game.
+It's intended to be used in small and big incident response investigations to track findings, tasks, making reporting easy and generally stay on top of the game. The current version has been battle tested multiple times now. 
+I'll keep fixing bugs and ading features as we go, but please remember, it's a leisure time project. So any help is appreciated.
+
+![alt text](./images/lateral.png "Lateral Movement Visualization")
+![alt text](./images/timeline.png "Visual Timeline")
+
 
 
 ## 1 Download & Installation
@@ -48,10 +54,7 @@ That's fast, isn't it?
 
 The following points are already on the roadmap. Please just post a new issue or send a message on [Twitter](https://twitter.com/cyberfox) if you got any suggestions for new improvements.
 
-* Add Webdav capability for easier sharing (Currently multiuser mode uses shares) &#128679;
-* Add CSV import and export functionality with custom field mapping
-* Create a tablet version (only makes sense once webdav works)
-* Reporting System to export prefilled report templates (requires adding killchain stage to timeline elements)
+You can checkout the planned feature for the nex releases under [projects](https://github.com/cyb3rfox/Aurora-Incident-Response/projects).
 
 ### 2.3 Build executables for distribution
 
@@ -154,6 +157,10 @@ Even though this is a side and weekend project it's still good to know, that my 
 
 * Ernesto
 * Thomas
+
+The following people have contributed changes that have a significant impact on the tool:
+
+* Félix Brezo, Ph. D. (working on visualization parts)
 
 
 
