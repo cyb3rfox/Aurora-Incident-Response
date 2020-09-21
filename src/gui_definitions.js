@@ -166,6 +166,10 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'event_data', caption: 'Event', type: 'text' },
@@ -241,6 +245,7 @@ var config = {
         menu: [
 
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'}
         ],
         multiSearch: true,
         searches: [
@@ -383,6 +388,10 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'account_name', caption: 'Account Name', type: 'text' },
@@ -421,6 +430,7 @@ var config = {
             footer: true
         },
         menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
         ],
         multiSearch: true,
@@ -469,6 +479,7 @@ var config = {
             footer: true
         },
         menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
         ],
         multiSearch: true,
@@ -596,6 +607,9 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'name', caption: 'Name', type: 'text' },
@@ -688,7 +702,7 @@ var config = {
 
 
     ////////////////////////////
-    ///// Add to MISO GRID /////
+    ///// Add to MISP GRID /////
     ////////////////////////////
 
     grd_add_misp: {
