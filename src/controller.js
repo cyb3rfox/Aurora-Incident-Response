@@ -178,6 +178,33 @@ registerComponents = function(){
         }
     }
 
+    w2ui.grd_timeline.onMenuClick = function(event) {
+
+        switch (event.menuItem.id) {
+
+            case 'duplicate':
+                w2ui.grd_timeline.save()
+                event_type = w2ui.grd_timeline.get(event.recid).event_type
+                event_host = w2ui.grd_timeline.get(event.recid).event_host
+                event_source_host = w2ui.grd_timeline.get(event.recid).event_source_host
+                killchain = w2ui.grd_timeline.get(event.recid).killchain
+                event_data = w2ui.grd_timeline.get(event.recid).event_data
+
+                w2ui.grd_timeline.add({
+                    recid: getNextRECID(w2ui.grd_timeline),
+                    event_host: event_host,
+                    event_type: event_type,
+                    event_source_host: event_source_host,
+                    killchain: killchain,
+                    event_data: event_data
+                });
+
+                break;
+
+        }
+
+    }
+
 
 
 
@@ -221,6 +248,22 @@ registerComponents = function(){
                     date_time: first_compromise
                 });
                 w2alert("First compromise of the system has been added to timeline.")
+                break;
+
+            case 'duplicate':
+                w2ui.grd_investigated_systems.save()
+                verdict = w2ui.grd_investigated_systems.get(event.recid).verdict
+                summary = w2ui.grd_investigated_systems.get(event.recid).summary
+                analysis_required = w2ui.grd_investigated_systems.get(event.recid).analysis_required
+
+
+                w2ui.grd_investigated_systems.add({
+                    recid: getNextRECID(w2ui.grd_investigated_systems),
+                    verdict: verdict,
+                    summary: summary,
+                    analysis_required: analysis_required,
+                });
+
                 break;
 
         }
@@ -355,6 +398,30 @@ registerComponents = function(){
         }
     }
 
+    w2ui.grd_accounts.onMenuClick = function(event) {
+
+        switch (event.menuItem.id) {
+
+            case 'duplicate':
+                w2ui.grd_accounts.save()
+                account_name = w2ui.grd_accounts.get(event.recid).account_name
+                domain = w2ui.grd_accounts.get(event.recid).domain
+                context = w2ui.grd_accounts.get(event.recid).context
+
+                w2ui.grd_accounts.add({
+                    recid: getNextRECID(w2ui.grd_accounts),
+                    account_name: account_name,
+                    domain: domain,
+                    context: context,
+                    date_added: (new Date()).getTime()
+                });
+
+                break;
+
+        }
+
+    }
+
 
     /////////////
     // Network //
@@ -362,8 +429,6 @@ registerComponents = function(){
 
     w2ui.grd_network.toolbar.onClick = function(event){
 
-
-        console.log("adding to network")
         currentgrid = w2ui.grd_network
         switch(event.target) {
             case 'add':
@@ -384,6 +449,28 @@ registerComponents = function(){
                 w2ui.grd_network.save()
                 openMispAddNetworkPopup(event.recid)
                 break;
+
+            case 'duplicate':
+                w2ui.grd_network.save()
+                ip = w2ui.grd_network.get(event.recid).ip
+                port = w2ui.grd_network.get(event.recid).port
+                domainname = w2ui.grd_network.get(event.recid).domainname
+                context = w2ui.grd_network.get(event.recid).context
+                malware = w2ui.grd_network.get(event.recid).malware
+
+
+                w2ui.grd_network.add({
+                    recid: getNextRECID(w2ui.grd_network),
+                    ip: ip,
+                    domainname: domainname,
+                    port: port,
+                    malware:malware,
+                    context:context,
+                    date_added: (new Date()).getTime()
+                });
+
+                break;
+
         }
 
     }
@@ -435,6 +522,33 @@ registerComponents = function(){
 
                 w2alert("Exfiltration has been added to timeline.")
                 break;
+
+            case 'duplicate':
+                w2ui.grd_exfiltration.save()
+                created = w2ui.grd_exfiltration.get(event.recid).created
+                exfiltime = w2ui.grd_exfiltration.get(event.recid).exfiltime
+                stagingsystem = w2ui.grd_exfiltration.get(event.recid).stagingsystem
+                original = w2ui.grd_exfiltration.get(event.recid).original
+                exfil_to = w2ui.grd_exfiltration.get(event.recid).exfil_to
+                filename = w2ui.grd_exfiltration.get(event.recid).filename
+                size = w2ui.grd_exfiltration.get(event.recid).size
+                contents = w2ui.grd_exfiltration.get(event.recid).contents
+                context = w2ui.grd_exfiltration.get(event.recid).context
+
+
+                w2ui.grd_exfiltration.add({
+                    recid: getNextRECID(w2ui.grd_exfiltration),
+                    created: created,
+                    exfiltime: exfiltime,
+                    stagingsystem: stagingsystem,
+                    original:original,
+                    exfil_to:exfil_to,
+                    filename:filename,
+                    size:size,
+                    contents:contents,
+                    context:context
+                });
+                break;
         }
     }
 
@@ -457,6 +571,9 @@ registerComponents = function(){
         }
     }
 
+    w2ui.grd_systems.onChange = updateSystems
+
+
     ///////////////////
     // Investigators //
     ///////////////////
@@ -475,9 +592,9 @@ registerComponents = function(){
         }
     }
 
-    ///////////////////
-    // Investigators //
-    ///////////////////
+    //////////////
+    // Evidence //
+    //////////////
 
     w2ui.grd_evidence.toolbar.onClick = function(event){
 
@@ -489,6 +606,34 @@ registerComponents = function(){
 
             case 'remove':
                 currentgrid.remove(currentgrid.getSelection())
+                break;
+        }
+    }
+
+    w2ui.grd_evidence.onMenuClick = function(event){
+
+        switch (event.menuItem.id) {
+
+            case 'duplicate':
+                w2ui.grd_evidence.save()
+                date_acquired = w2ui.grd_evidence.get(event.recid).date_acquired
+                name = w2ui.grd_evidence.get(event.recid).name
+                description = w2ui.grd_evidence.get(event.recid).description
+                size = w2ui.grd_evidence.get(event.recid).size
+                provider = w2ui.grd_evidence.get(event.recid).provider
+                ev_location = w2ui.grd_evidence.get(event.recid).location
+
+                if(name=="undefined") name = ""
+
+                w2ui.grd_evidence.add({
+                    recid: getNextRECID(w2ui.grd_evidence),
+                    date_acquired: date_acquired,
+                    name:name,
+                    description:description,
+                    size:size,
+                    provider:provider,
+                    location:ev_location
+                });
                 break;
         }
     }

@@ -235,6 +235,7 @@ function updateVersion(current_version){
 
     // 2 -> 3
     if(current_version<3) {
+
         case_data.direction = [{id: 1, text: "<-"}, {id: 2, text: "->"}]
         casedata.killchain = [
             {id: 1, text: 'Recon'},
@@ -253,6 +254,9 @@ function updateVersion(current_version){
     }
 
     // 4 -> 5
+    if(current_version<5) {
+
+
     case_data.system_types =[
         {id:1,text:"Desktop"},
         {id:2,text:"Server"},
@@ -261,8 +265,14 @@ function updateVersion(current_version){
         {id:5,text:"TV"},
         {id:6,text:"Networking device"},
         {id:7,text:"IoT device"},
-        {id:8,text:"Other"}
+        {id:8,text:"Other"},
+        {id:8,text:"Attacker Infra"}
     ]
+
+    case_data.event_types.push({id:11, text:"C2"})
+    }
+
+    case_data.storage_format_version = 5
 
 
 }
@@ -595,6 +605,58 @@ function stopAutoUpdate(){
 }
 
 
+
+/////////////////////////////
+///// Systems Management ////
+/////////////////////////////
+
+function updateSystems(event){
+    old_system = event.value_original
+    new_system = event.value_new
+
+    if(old_system=="" || old_system==null) return; // don't override all fields with new values when the old value was an empty field
+
+    //check timeline
+    records = w2ui.grd_timeline.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].event_host
+        system2 = records[i].event_source_host
+
+        if(system1 == old_system ) records[i].event_host=new_system
+        if(system2 == old_system) records[i].event_source_host=new_system
+    }
+
+    //check investigated systems
+    records = w2ui.grd_investigated_systems.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].hostname
+
+        if(system1 == old_system) records[i].hostname=new_system
+
+    }
+
+    //check malware
+    records = w2ui.grd_malware.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].hostname
+
+        if(system1 == old_system) records[i].hostname=new_system
+
+    }
+
+    //Check exfil
+    records = w2ui.grd_exfiltration.records
+    for(i=0;i<records.length;i++){
+        system1 = records[i].stagingsystem
+        system2 = records[i].original
+        system3 = records[i].exfil_to
+
+        if(system1 == old_system) records[i].stagingsystem=new_system
+        if(system2 == old_system) records[i].original=new_system
+        if(system3 == old_system) records[i].exfil_to=new_system
+
+    }
+}
 
 ///////////////
 ///// IPC /////

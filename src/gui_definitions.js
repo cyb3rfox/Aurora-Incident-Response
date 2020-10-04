@@ -107,8 +107,8 @@ var config = {
                     { type: 'button', id: 'open_sod', text: 'Open Engagement (File)', icon: 'fa fa-folder-open' },
                     { type: 'button', id: 'open_webdav', text: 'Open Engagement (WebDav)', icon: 'fa fa-server' },
                     { type: 'button', id: 'save_sod', text: 'Save Engagement', icon: 'fa fa-save' },
-                    { type: 'button', id: 'release_lock', text: 'Release Lock', icon: 'fa fa-lock-open' },
-                    { type: 'button', id: 'request_lock', text: 'Request Lock', icon: 'fa fa-key' },
+                    { type: 'button', id: 'release_lock', text: 'Release Lock', icon: 'fa fa-unlock' },
+                    { type: 'button', id: 'request_lock', text: 'Request Lock', icon: 'fa fa-lock' },
                     { type: 'button', id: 'force_unlock', text: 'Force Unlock', icon: 'fa fa-bomb' },
                 ]},
             { type: 'button', id: 'case_details', text: 'Case Configuration', icon: 'fa fa-cogs' },
@@ -116,6 +116,7 @@ var config = {
                     { type: 'button', id: 'online_help', text: 'Online Help', icon: 'fa fa-globe' },
                     { type: 'button', id: 'about', text: 'About', icon: 'fa fa-info' },
                 ]},  { type: 'spacer' },
+            //{ type: 'html',html:"<img onclick=\"browser_open('https://www.infoguard.ch/')\" src='img/ig.png' style='height:30px'>&nbsp;<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
             { type: 'html',html:"<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
 
         ],
@@ -165,6 +166,10 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'event_data', caption: 'Event', type: 'text' },
@@ -240,6 +245,7 @@ var config = {
         menu: [
 
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'}
         ],
         multiSearch: true,
         searches: [
@@ -382,6 +388,10 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'account_name', caption: 'Account Name', type: 'text' },
@@ -420,6 +430,7 @@ var config = {
             footer: true
         },
         menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
         ],
         multiSearch: true,
@@ -468,11 +479,12 @@ var config = {
             footer: true
         },
         menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
         ],
         multiSearch: true,
         searches: [
-            { field: 'staging', caption: 'Staging System', type: 'text' },
+            { field: 'stagingsystem', caption: 'Staging System', type: 'text' },
             { field: 'original', caption: 'Original System', type: 'text' },
             { field: 'filename', caption: 'Filename', type: 'text' },
             { field: 'size', caption: 'Size', type: 'int' },
@@ -595,6 +607,9 @@ var config = {
             toolbar: true,
             footer: true
         },
+        menu: [
+            { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
+        ],
         multiSearch: true,
         searches: [
             { field: 'name', caption: 'Name', type: 'text' },
@@ -687,7 +702,7 @@ var config = {
 
 
     ////////////////////////////
-    ///// Add to MISO GRID /////
+    ///// Add to MISP GRID /////
     ////////////////////////////
 
     grd_add_misp: {

@@ -30,7 +30,8 @@ data_template  = {
         {id:7,text:"Tanium Trace"},
         {id:8,text:"Malware"},
         {id:9,text:"eMail"},
-        {id:10,text:"Misc"}
+        {id:10,text:"Misc"},
+        {id:11,text:"C2"}
     ],
     "system_types":[
         {id:1,text:"Desktop"},
@@ -40,7 +41,8 @@ data_template  = {
         {id:5,text:"TV"},
         {id:6,text:"Networking device"},
         {id:7,text:"IoT device"},
-        {id:8,text:"Other"}
+        {id:8,text:"Other"},
+        {id:9,text:"Attacker Infra"}
     ],
     "verdicts":[
         {id:1,text:"Infected"},

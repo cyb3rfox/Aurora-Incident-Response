@@ -13,12 +13,29 @@ global.Dirty = {
 function createWindow () {
     // Create the browser window.
     win = new BrowserWindow({ width: 1600, height: 900, icon: 'icon/aurora.ico'})
-    win.setMenuBarVisibility(false)
+    //win.setMenuBarVisibility(false)
 
     // and load the index.html of the app.
     win.loadFile('index.html')
 
-    const app = require('electron')
+    const { app, Menu } = require('electron')
+
+    var template = [{
+        label: "Aurora IR",
+        submenu: [
+            { label: "Quit", accelerator: "Command+Q", click: function() { app.quit(); }}
+        ]}, {
+        label: "Edit",
+        submenu: [
+            { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+            { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+            { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        ]}
+    ];
+
+    Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+
+
 
     // Open the DevTools
    //win.webContents.openDevTools()
