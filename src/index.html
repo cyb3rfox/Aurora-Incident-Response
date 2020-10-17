@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Aurora Incident Response 0.6.3</title>
+    <title>Aurora Incident Response 0.6.4</title>
 
 
     <!-- BEGIN External Libs Imports-->
@@ -42,6 +42,8 @@
     <script src="gui_definitions.js"></script>
     <script src="gui_functions.js"></script>
     <script src="settings.js"></script>
+    <script src="import.js"></script>
+    <script src="export.js"></script>
     <script src="helper_functions.js"></script>
     <link rel="stylesheet" href="css/aurora.css">
     <!-- END Aurora Code Imports-->
@@ -81,6 +83,7 @@
         $().w2grid(config.grd_actions);
         $().w2grid(config.grd_casenotes);
         $().w2grid(config.grd_add_misp);
+        $().w2grid(config.grd_import_mapping);
         $().w2layout(config.popup_layout);
         $().w2layout(config.webdav_popup_layout);
         $().w2form(config.case_form);

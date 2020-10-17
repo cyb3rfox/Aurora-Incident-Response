@@ -58,6 +58,7 @@ var config = {
         ]
     },
 
+
     /////////////////
     ///// Forms /////
     /////////////////
@@ -224,7 +225,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: [
@@ -294,7 +297,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Record', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: [
@@ -370,6 +375,8 @@ var config = {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Malware', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: [
@@ -412,7 +419,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: [],
@@ -462,7 +471,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: [],
@@ -521,6 +532,8 @@ var config = {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
                 { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -565,7 +578,11 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -591,7 +608,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Investigator', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Investigator', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Investigator', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -630,7 +649,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Evidence', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Evidence', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Evidence', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -665,7 +686,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -694,7 +717,9 @@ var config = {
         toolbar: {
             items: [
                 { id: 'add', type: 'button', caption: 'Add Item', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' }
+                { id: 'remove', type: 'button', caption: 'Remove Item', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],
         },
         records: []
@@ -704,7 +729,6 @@ var config = {
     ////////////////////////////
     ///// Add to MISP GRID /////
     ////////////////////////////
-
     grd_add_misp: {
         name: 'grd_add_misp',
         show: {
@@ -730,7 +754,45 @@ var config = {
         },
         records: []
     },
+
+
+
+    ////////////////////////////
+    ///// Import Mapping /////
+    ////////////////////////////
+    grd_import_mapping: {
+        name: 'grd_import_mapping',
+        show: {
+            toolbar: true,
+            footer: false,
+            selectColumn: false,
+            toolbarSearch: false
+        },
+        columns: [
+            { field: 'csv', sortable: true,caption: 'Content', size: '50%'},
+            { field: 'grid', sortable: true,caption: 'Grid Field', size: '50%', editable: { type: 'list', items: [], showAll: true },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }},
+        ],
+        toolbar: {
+            items: [
+                { id: 'import', type: 'button', caption: 'Import', icon: 'fa fa-upload' },
+            ],
+        },
+        records: []
+    },
 };
+
+
+
+
+
+
+
+
+
 
 /**
  * Content for about popup
@@ -738,7 +800,7 @@ var config = {
 about_content = `
 
     <div id="aboutcontent" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;">
-    <p>Aurora 0.6.3</p>
+    <p>Aurora 0.6.4</p>
     (c) 2020 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
     <p>Released under Apache 2.0 License</p>
     <p>Supported and used by <a onclick="browser_open('https://www.infoguard.ch')" href="#">InfoGuard</a></p>

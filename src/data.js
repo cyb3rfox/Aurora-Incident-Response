@@ -78,11 +78,12 @@ function updateSOD(){
 function updateSODFile() { //TODO: need to write that in a way that it also works when you don0t have the lock. currently all calls to editable will fail when they are not set
 
     var fs = require('fs');
-
+    w2utils.lock($( "#main" ),"Loading file...",true)
 
     var filebuffer = fs.readFileSync(currentfile.toString());
     case_data = JSON.parse(filebuffer);
 
+    w2utils.unlock($( "#main" ))
     if(case_data.hasOwnProperty(storage_format_version) && case_data.storage_format_version < storage_format_version){
         w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again")
         return false
@@ -143,7 +144,7 @@ function newSOD() {
     w2confirm('Are you sure you want to create a new SOD? All unsaved data will be lost.', function btn(answer) {
         if (answer == "Yes") {
 
-            case_data = case_template
+            case_data = data_template
             w2ui.grd_timeline.clear()
             w2ui.grd_timeline.render()
             w2ui.grd_investigated_systems.clear()
@@ -312,9 +313,10 @@ function saveSODFile(){
 
 
     var fs = require("fs");
+    w2utils.lock($( "#main" ),"Saving file...",true)
     var buffer = new Buffer.from(JSON.stringify(case_data,null, "\t"));
     fs.writeFileSync(currentfile.toString(), buffer);
-
+    w2utils.unlock($( "#main" ))
     var today = new Date();
     var time=('0'  + today.getHours()).slice(-2)+':'+('0'  + today.getMinutes()).slice(-2)+':'+('0' + today.getSeconds()).slice(-2);
 
@@ -558,7 +560,7 @@ function getNextRECID(grid){
 
     var highest = 1;
 
-    for(i=0; i< grid.records.length;i++){
+    for(var i=0; i< grid.records.length;i++){
 
         var recid = grid.records[i].recid
         if(recid>highest) highest=recid
@@ -618,7 +620,7 @@ function updateSystems(event){
 
     //check timeline
     records = w2ui.grd_timeline.records
-    for(i=0;i<records.length;i++){
+    for(var i=0;i<records.length;i++){
         system1 = records[i].event_host
         system2 = records[i].event_source_host
 
@@ -628,7 +630,7 @@ function updateSystems(event){
 
     //check investigated systems
     records = w2ui.grd_investigated_systems.records
-    for(i=0;i<records.length;i++){
+    for(var i=0;i<records.length;i++){
         system1 = records[i].hostname
 
         if(system1 == old_system) records[i].hostname=new_system
@@ -637,7 +639,7 @@ function updateSystems(event){
 
     //check malware
     records = w2ui.grd_malware.records
-    for(i=0;i<records.length;i++){
+    for(var i=0;i<records.length;i++){
         system1 = records[i].hostname
 
         if(system1 == old_system) records[i].hostname=new_system
@@ -646,7 +648,7 @@ function updateSystems(event){
 
     //Check exfil
     records = w2ui.grd_exfiltration.records
-    for(i=0;i<records.length;i++){
+    for(var i=0;i<records.length;i++){
         system1 = records[i].stagingsystem
         system2 = records[i].original
         system3 = records[i].exfil_to

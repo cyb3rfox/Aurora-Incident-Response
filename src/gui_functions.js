@@ -238,9 +238,12 @@ function openMispAddMalwarePopup(recid) {
     notes = w2ui.grd_malware.get(recid).notes
 
     //check what type of hash it is
-    hashtype = "md5"
-    if (hash.length == 40) hashtype = "sha1"
-    if (hash.length == 64) hashtype = "sha256"
+    hashtype = "none"
+    if(hash) {
+        hashtype = "md5"
+        if (hash.length == 40) hashtype = "sha1"
+        if (hash.length == 64) hashtype = "sha256"
+    }
 
 
     records = [ {recid:1, aurora_field_type:"Filename",misp_field_type:"filename",value:filename,comment:notes},
@@ -835,6 +838,53 @@ function showActivityPlot(){
     })
 }
 
+//////////////////////////////////////
+//////// Import GUI Functions ////////
+//////////////////////////////////////
+
+/**
+ * Prepare and open the popup for import column mapping
+ * @param recid -record id of right clicked record.
+ */
+function openImportPopup(fields,content) {
+
+    records = []
+
+    firstline = CSVtoArray(content[0])
+
+    for(var i=0; i<firstline.length;i++){
+        records.push({recid:records.length+1, csv:firstline[i], grid:""})
+    }
+
+
+    w2ui.grd_import_mapping.getColumn('grid').editable.items = fields
+    w2ui.grd_import_mapping.records = records
+    w2ui.grd_import_mapping.refresh()
+
+
+    w2popup.open({
+        title: 'Import Mapping',
+        width: 550,
+        height: 400,
+        showMax: true,
+        body: '<div id="main"></div>',
+        onOpen: function (event) {
+            event.onComplete = function () {
+                $('#w2ui-popup #main').w2render('popup_layout')
+                //render grid into form
+                w2ui.popup_layout.content('main', w2ui.grd_import_mapping);
+            };
+        },
+        onToggle: function (event) {
+            event.onComplete = function () {
+                w2ui.popup_layout.resize();
+            }
+        }
+    });
+}
+
+
+
 
 //////////////////////////////////
 //////// Helper Functions ////////
@@ -884,3 +934,7 @@ function activate_all_context_items(menu){
         menu[i].disabled = false
     }
 }
+
+
+
+
