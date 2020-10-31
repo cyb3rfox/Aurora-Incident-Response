@@ -137,6 +137,13 @@ Settings for different libraries. Currently only defines the time field format f
 
 Small helper functions that do not fit anywhere else.
 
+#### 2.4.12 `import.js`
+
+Handles CSV imports
+
+#### 2.4.13 `exports.js`
+
+Handles CSV exports
 
 ## 3 Licensing
 
