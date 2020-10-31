@@ -116,7 +116,10 @@ var config = {
             { type: 'menu', id: 'help', text: 'Help', icon: 'fa fa-question-circle', items: [
                     { type: 'button', id: 'online_help', text: 'Online Help', icon: 'fa fa-globe' },
                     { type: 'button', id: 'about', text: 'About', icon: 'fa fa-info' },
-                ]},  { type: 'spacer' },
+                ]},
+            //{ type: 'button', id: 'casenews', text: 'Case News', icon: 'fa fa-newspaper-o' },
+
+            { type: 'spacer' },
             //{ type: 'html',html:"<img onclick=\"browser_open('https://www.infoguard.ch/')\" src='img/ig.png' style='height:30px'>&nbsp;<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
             { type: 'html',html:"<img onclick=\"browser_open('https://cyberfox.blog/')\" src='img/logo.png'>" },
 
@@ -833,7 +836,7 @@ var config = {
 about_content = `
 
     <div id="aboutcontent" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;">
-    <p>Aurora 0.6.4</p>
+    <p>Aurora 0.6.5</p>
     (c) 2020 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
     <p>Released under Apache 2.0 License</p>
     <p>Supported and used by <a onclick="browser_open('https://www.infoguard.ch')" href="#">InfoGuard</a></p>
