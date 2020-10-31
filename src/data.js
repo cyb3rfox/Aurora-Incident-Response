@@ -181,6 +181,8 @@ function newSOD() {
             lockstate = "&#128272; open"
             $("#lock").html(lockstate)
             lockedByMe = true
+
+            w2ui.main_layout.content('main', w2ui.grd_timeline);
         }
     });
 }
@@ -414,8 +416,7 @@ function openSODFile() {
 
             }
 
-
-
+            w2ui.main_layout.content('main', w2ui.grd_timeline);
 
 
         }
