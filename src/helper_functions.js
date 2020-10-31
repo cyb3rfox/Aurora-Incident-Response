@@ -9,9 +9,6 @@ browser_open =function(url){
 }
 
 
-
-
-
 /**
  *
  * Return array of string values, or NULL if CSV string not well formed.
@@ -40,4 +37,12 @@ function CSVtoArray(text) {
     // Handle special case of empty last value.
     if (/,\s*$/.test(text)) a.push('');
     return a;
-};
+}
+
+function CSVtoArrayEasy(text){
+
+    return text.split(",")
+
+}
+
+

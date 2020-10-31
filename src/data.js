@@ -34,6 +34,8 @@ function syncAllChanges(){
     case_data.network_indicators = w2ui.grd_network.records
     w2ui.grd_exfiltration.save()
     case_data.exfiltration = w2ui.grd_exfiltration.records
+    w2ui.grd_osint.save()
+    case_data.osint = w2ui.grd_systems.records
     w2ui.grd_systems.save()
     case_data.systems = w2ui.grd_systems.records
     w2ui.grd_actions.save()
@@ -101,6 +103,8 @@ function updateSODFile() { //TODO: need to write that in a way that it also work
     w2ui.grd_network.refresh()
     w2ui.grd_exfiltration.records = case_data.exfiltration
     w2ui.grd_exfiltration.refresh()
+    w2ui.grd_osint.records = case_data.systems
+    w2ui.grd_osint.refresh()
     w2ui.grd_systems.records = case_data.systems
     w2ui.grd_systems.refresh()
     w2ui.grd_actions.records = case_data.actions
@@ -157,6 +161,8 @@ function newSOD() {
             w2ui.grd_network.render()
             w2ui.grd_exfiltration.clear()
             w2ui.grd_exfiltration.render()
+            w2ui.grd_osint.clear()
+            w2ui.grd_osint.render()
             w2ui.grd_systems.clear()
             w2ui.grd_systems.render()
             w2ui.grd_actions.clear()
@@ -273,8 +279,11 @@ function updateVersion(current_version){
     case_data.event_types.push({id:11, text:"C2"})
     }
 
-    case_data.storage_format_version = 5
+    // 5->6
 
+    case_data.osint=[]
+
+    case_data.storage_format_version = 6
 
 }
 
@@ -366,6 +375,8 @@ function openSODFile() {
             w2ui.grd_network.refresh()
             w2ui.grd_exfiltration.records = case_data.exfiltration
             w2ui.grd_exfiltration.refresh()
+            w2ui.grd_osint.records = case_data.systems
+            w2ui.grd_osint.refresh()
             w2ui.grd_systems.records = case_data.systems
             w2ui.grd_systems.refresh()
             w2ui.grd_actions.records = case_data.actions

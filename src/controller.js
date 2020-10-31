@@ -57,7 +57,6 @@ registerComponents = function(){
     //that needs some more work to offload functionality where it needs to be
     w2ui.sidebar.onClick = function(event){
 
-
         switch (event.target) {
             case 'timeline':
                 syncAllChanges()
@@ -119,6 +118,11 @@ registerComponents = function(){
                     w2ui.grd_exfiltration.getColumn('exfil_to').editable.items = case_data.systems
                 }
                 w2ui.main_layout.content('main', w2ui.grd_exfiltration);
+                break;
+
+            case 'osint':
+                syncAllChanges()
+                w2ui.main_layout.content('main', w2ui.grd_osint);
                 break;
 
             case 'systems':
@@ -600,6 +604,34 @@ registerComponents = function(){
         }
     }
 
+
+    ///////////
+    // OSInt //
+    ///////////
+
+    w2ui.grd_osint.toolbar.onClick = function(event){
+
+        currentgrid = w2ui.grd_osint
+        switch(event.target) {
+            case 'add':
+                currentgrid.add({ recid: getNextRECID(currentgrid) });
+                break;
+
+            case 'remove':
+                currentgrid.remove(currentgrid.getSelection())
+                break;
+
+            case 'import':
+                show_import_dialog(w2ui.grd_osint)
+                break;
+
+            case 'export':
+                export_csv(w2ui.grd_osint)
+                break;
+        }
+    }
+
+
     /////////////
     // Systems //
     /////////////
@@ -783,6 +815,10 @@ registerComponents = function(){
         }
     }
 
+
+    ///////////////////////////////
+    // Import Mapping popup grid //
+    ///////////////////////////////
     w2ui.grd_import_mapping.toolbar.onClick = function(event){
 
 

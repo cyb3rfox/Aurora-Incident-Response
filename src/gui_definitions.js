@@ -139,6 +139,7 @@ var config = {
                     { id: 'accounts', text: 'Compromised Accounts', icon: 'fa fa-users'},
                     { id: 'network', text: 'Network Indicators', icon: 'fa fa-sitemap'},
                     { id: 'exfiltration', text: 'Exfiltration', icon: 'fa fa-tint'},
+                    { id: 'osint', text: 'OSInt', icon: 'fa fa-globe'},
                     { id: 'systems', text: 'Systems', icon: 'fa fa-desktop'},
                 ]},
             { id: 'reporting', text: 'Reporting', group: true, expanded: true, nodes: [
@@ -408,7 +409,7 @@ var config = {
             { field: 'attribution', caption: 'Attribution', type: 'text' },
         ],
         columns: [
-            { field: 'date_added', sortable: true,caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px',sortable: true },
+            { field: 'date_added', sortable: true,caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px',sortable: true },
             { field: 'account_name', sortable: true,caption: 'Account Name', size: '120px', editable: { type: 'text', min: 0, max: 100 } },
             { field: 'domain', sortable: true,caption: 'Account Domain', size: '120px' , editable: { type: 'text', min: 0, max: 80 }},
             { field: 'context', sortable: true,caption: 'Context', size: '100%', info: true, editable: { type: 'text', min: 0, max: 500 }},
@@ -453,7 +454,7 @@ var config = {
             { field: 'attribution', caption: 'Attribution', type: 'text' },
         ],
         columns: [
-            { field: 'date_added', sortable: true,caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
+            { field: 'date_added', sortable: true,caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'ip', sortable: true,caption: 'IP', size: '120px', editable: { type: 'text', min: 7, max: 15 } },
             { field: 'domainname',sortable: true, caption: 'Domainname', size: '120px' , editable: { type: 'text', min: 0, max: 180 }},
             { field: 'port', sortable: true,caption: 'Port', size: '40px', type:"number", editable: { type: 'number' }},
@@ -540,6 +541,40 @@ var config = {
     },
 
 
+    ///////////////////////
+    ///// OSINT  GRID /////
+    ///////////////////////
+
+    grd_osint: {
+        name: 'grd_osint',
+        show: {
+            toolbar: true,
+            footer: true
+        },
+        columns: [
+
+            { field: 'text', sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text' }  },
+            { field: 'url',sortable: true, caption: 'URL', size: '200px',editable: { type: 'text' },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return "<a href=\"javascript:browser_open('"+html+"')\">"+html+"</a>" || '';
+                }
+            },
+            { field: 'desc', sortable: true,caption: 'Description' ,size:"100%", editable: { type: 'text'  } },
+
+        ],
+        toolbar: {
+            items: [
+                { id: 'add', type: 'button', caption: 'Add OSInt', icon: 'w2ui-icon-plus' },
+                { id: 'remove', type: 'button', caption: 'Remove OSInt', icon: 'fa fa-minus' },
+                { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
+                { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
+            ],
+        },
+        records: []
+    },
+
+
     ////////////////////////
     ///// Systems GRID /////
     ////////////////////////
@@ -600,7 +635,6 @@ var config = {
             footer: true
         },
         columns: [
-            { field: 'recid', sortable: true,caption: 'recid', size: '150px'},
             { field: 'text',sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 }  },
             { field: 'full_name',sortable: true, caption: 'Full Name', size: '200px',editable: { type: 'text', min: 5, max: 40 }  },
             { field: 'role', sortable: true,caption: 'Role', size: '200px' , editable: { type: 'text', min: 0, max: 40 } },
@@ -638,7 +672,6 @@ var config = {
 
         ],
         columns: [
-            { field: 'recid', sortable: true,caption: 'ID', size: '30px'},
             { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
             { field: 'name',sortable: true, caption: 'Name', size: '130px', editable: { type: 'text'}  },
             { field: 'description',sortable: true, caption: 'Description', size: '100%',editable: { type: 'text' }  },
@@ -669,7 +702,7 @@ var config = {
             footer: true
         },
         columns: [
-            { field: 'date_added',sortable: true, caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
+            { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'date_due',sortable: true, caption: 'Date Due', render:'date:YYYY-MM-DD' , type:'date', size: '80px', editable: { type: 'date'} },
             { field: 'task', sortable: true,caption: 'Task', size: '100%', info:true, editable: { type: 'text', min: 1, max: 1500 } },
             { field: 'status',sortable: true, caption: 'Status', size: '250px', editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' },
@@ -706,7 +739,7 @@ var config = {
             footer: true
         },
         columns: [
-            { field: 'date_added',sortable: true, caption: 'Date Added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
+            { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'note', sortable: true,caption: 'Note', size: '100%', info:true, editable: { type: 'text', min: 1, max: 1500 } },
             { field: 'owner', caption: 'Owner', size: '250px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
                 render: function (record, index, col_index) {
@@ -769,8 +802,8 @@ var config = {
             toolbarSearch: false
         },
         columns: [
-            { field: 'csv', sortable: true,caption: 'Content', size: '50%'},
-            { field: 'grid', sortable: true,caption: 'Grid Field', size: '50%', editable: { type: 'list', items: [], showAll: true },
+            { field: 'grid', sortable: true,caption: 'Grid Field', size: '50%'},
+            { field: 'csv', sortable: true,caption: 'First line of CSV', size: '50%', editable: { type: 'list', items: [], showAll: true },
                 render: function (record, index, col_index) {
                     var html = this.getCellValue(index, col_index);
                     return html || '';
