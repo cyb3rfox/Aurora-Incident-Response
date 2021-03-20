@@ -57,6 +57,14 @@ data_template  = {
         {id:2,text:"In Progress"},
         {id:3,text:"Completed"},
         {id:4,text:"Closed"},
+        {id:5,text:"Rejected"},
+    ],
+    "task_types":[
+        {id:1,text:"Information request"},
+        {id:2,text:"Analysis"},
+        {id:3,text:"Deliverable"},
+        {id:4,text:"Checkpoint"},
+        {id:5,text:"Other"},
     ],
     "direction":[
         {id:1,text:"<-"},

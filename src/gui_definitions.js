@@ -99,7 +99,7 @@ var config = {
     ////////////////////
     ///// Toolbars /////
     ////////////////////
-    
+
     toolbar: {
         name: 'toolbar',
         items: [
@@ -678,7 +678,6 @@ var config = {
             { field: 'description', caption: 'Description', type: 'text' },
             { field: 'provider', caption: 'Provider', type: 'text' },
             { field: 'location', caption: 'Location', type: 'text' },
-
         ],
         columns: [
             { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
@@ -714,11 +713,17 @@ var config = {
         searches: [
             { field: 'task', caption: 'Task', type: 'text' },
             { field: 'status', caption: 'Status', type: 'text' },
+            { field: 'task_type', caption: 'Type', type: 'list', options:{items:case_data.task_types} },
             { field: 'owner', caption: 'Owner', type: 'text' },
         ],
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'date_due',sortable: true, caption: 'Date Due', render:'date:YYYY-MM-DD' , type:'date', size: '80px', editable: { type: 'date'} },
+            { field: 'task_type',sortable: true, caption: 'Type', size: '150px', editable: { type: 'list', items: case_data.task_types, showAll: true ,  match: 'contains' },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }},
             { field: 'task', sortable: true,caption: 'Task', size: '100%', info:true, editable: { type: 'text', min: 1, max: 1500 } },
             { field: 'status',sortable: true, caption: 'Status', size: '250px', editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' },
                 render: function (record, index, col_index) {
