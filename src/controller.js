@@ -754,7 +754,7 @@ registerComponents = function(){
         currentgrid = w2ui.grd_actions
         switch(event.target) {
             case 'add':
-                currentgrid.add({ recid: getNextRECID(currentgrid), date_added: (new Date()).getTime()});
+                currentgrid.add({ recid: getNextRECID(currentgrid), date_added: (new Date()).getTime(),date_due:(new Date()).getTime()} );
                 break;
 
             case 'remove':

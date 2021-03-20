@@ -287,6 +287,9 @@ function updateVersion(current_version){
 
     case_data.storage_format_version = 6
 
+    // 6->7
+    case_data.storage_format_version = 7
+
 }
 
 
@@ -377,7 +380,7 @@ function openSODFile() {
             w2ui.grd_network.refresh()
             w2ui.grd_exfiltration.records = case_data.exfiltration
             w2ui.grd_exfiltration.refresh()
-            w2ui.grd_osint.records = case_data.systems
+            w2ui.grd_osint.records = case_data.osint
             w2ui.grd_osint.refresh()
             w2ui.grd_systems.records = case_data.systems
             w2ui.grd_systems.refresh()

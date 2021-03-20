@@ -251,7 +251,7 @@ var config = {
         },
         menu: [
 
-            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
+            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock-o' },
             { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'}
         ],
         multiSearch: true,
@@ -325,7 +325,7 @@ var config = {
         menu: [
             { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
             { id: "to_hosts", text: 'To hosts', icon: 'fa fa-bullseye' },
-            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
+            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock-o' },
             { id: 'misp', type: 'button', caption: 'Send to MISP', icon: 'fa fa-cloud' },
             { id: 'vt', type: 'button', caption: 'Check VT', icon: 'fa fa-search' },
         ],
@@ -407,6 +407,7 @@ var config = {
         searches: [
             { field: 'account_name', caption: 'Account Name', type: 'text' },
             { field: 'domain', caption: 'Domain', type: 'text' },
+            { field: 'sid', caption: 'SID', type: 'text' },
             { field: 'context', caption: 'Context', type: 'text' },
             { field: 'privileges', caption: 'Privileges', type: 'text' },
             { field: 'attribution', caption: 'Attribution', type: 'text' },
@@ -415,6 +416,7 @@ var config = {
             { field: 'date_added', sortable: true,caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px',sortable: true },
             { field: 'account_name', sortable: true,caption: 'Account Name', size: '120px', editable: { type: 'text', min: 0, max: 100 } },
             { field: 'domain', sortable: true,caption: 'Account Domain', size: '120px' , editable: { type: 'text', min: 0, max: 80 }},
+            { field: 'sid', sortable: true,caption: 'SID', size: '200px',  editable: { type: 'text', min: 0, max: 80 }},
             { field: 'context', sortable: true,caption: 'Context', size: '100%', info: true, editable: { type: 'text', min: 0, max: 500 }},
             { field: 'last_activity', sortable: true,caption: 'Last Activity', type:"datetime",size: '140px',editable: { type: 'datetime' } },
             { field: 'privileges', sortable: true,caption: 'Privileges', size: '120px', type:"text", editable: { type: 'text' }},
@@ -495,7 +497,7 @@ var config = {
         },
         menu: [
             { id: "duplicate", text: 'Duplicate Line', icon: 'fa fa-copy'},
-            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock' },
+            { id: "to_tl", text: 'To Timeline', icon: 'fa fa-clock-o' },
         ],
         multiSearch: true,
         searches: [
@@ -641,6 +643,10 @@ var config = {
             { field: 'text',sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 }  },
             { field: 'full_name',sortable: true, caption: 'Full Name', size: '200px',editable: { type: 'text', min: 5, max: 40 }  },
             { field: 'role', sortable: true,caption: 'Role', size: '200px' , editable: { type: 'text', min: 0, max: 40 } },
+            { field: 'phone', sortable: true,caption: 'Phone', size: '100%' , editable: { type: 'text', min: 0, max: 40 } },
+            { field: 'email', sortable: true,caption: 'eMail', size: '100%' , editable: { type: 'text', min: 0, max: 80 } },
+            { field: 'other', sortable: true,caption: 'Other', size: '100%' , editable: { type: 'text', min: 0, max: 80 } },
+            { field: 'affiliation', sortable: true,caption: 'Affiliation', size: '100%' , editable: { type: 'text', min: 0, max: 12 } },
         ],
         toolbar: {
             items: [
@@ -704,6 +710,12 @@ var config = {
             toolbar: true,
             footer: true
         },
+        multiSearch: true,
+        searches: [
+            { field: 'task', caption: 'Task', type: 'text' },
+            { field: 'status', caption: 'Status', type: 'text' },
+            { field: 'owner', caption: 'Owner', type: 'text' },
+        ],
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'date_due',sortable: true, caption: 'Date Due', render:'date:YYYY-MM-DD' , type:'date', size: '80px', editable: { type: 'date'} },
@@ -836,8 +848,8 @@ var config = {
 about_content = `
 
     <div id="aboutcontent" style="position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;">
-    <p>Aurora 0.6.5</p>
-    (c) 2020 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
+    <p>Aurora 0.6.6</p>
+    (c) 2018-2021 Mathias Fuchs (<a onclick="browser_open('https://cyberfox.blog')" href="#">https://cyberfox.blog</a>)
     <p>Released under Apache 2.0 License</p>
     <p>Supported and used by <a onclick="browser_open('https://www.infoguard.ch')" href="#">InfoGuard</a></p>
     <p>Application build using electron.js - <a onclick="browser_open('https://electronjs.org')"  href="#">https://electronjs.org</a></p>
