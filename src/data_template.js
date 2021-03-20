@@ -56,6 +56,7 @@ data_template  = {
         {id:1,text:"Assigned"},
         {id:2,text:"In Progress"},
         {id:3,text:"Completed"},
+        {id:4,text:"Closed"},
     ],
     "direction":[
         {id:1,text:"<-"},
