@@ -1,6 +1,6 @@
 // Main Data Template for new files
 
-storage_format_version = 5
+storage_format_version = 6
 
 data_template  = {
     "storage_format_version": storage_format_version,
@@ -16,6 +16,8 @@ data_template  = {
     "network_indicators":[],
     "exfiltration":[],
     "hosts":[],
+    "systems":[],
+    "osint":[],
     "investigators":[],
     "evidence":[],
     "actions":[],

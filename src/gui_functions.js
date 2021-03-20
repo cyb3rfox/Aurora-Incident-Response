@@ -15,17 +15,18 @@ function activateReadOnly(){
     w2ui['toolbar'].enable('file:request_lock');
 
     //remove buttons in grids
-    w2ui.grd_timeline.toolbar.disable("add","remove")
-    w2ui.grd_investigated_systems.toolbar.disable("add","remove")
-    w2ui.grd_malware.toolbar.disable("add","remove","line_add")
-    w2ui.grd_accounts.toolbar.disable("add","remove")
-    w2ui.grd_network.toolbar.disable("add","remove")
-    w2ui.grd_exfiltration.toolbar.disable("add","remove")
-    w2ui.grd_systems.toolbar.disable("add","remove","import")
-    w2ui.grd_actions.toolbar.disable("add","remove")
-    w2ui.grd_casenotes.toolbar.disable("add","remove")
-    w2ui.grd_investigators.toolbar.disable("add","remove")
-    w2ui.grd_evidence.toolbar.disable("add","remove")
+    w2ui.grd_timeline.toolbar.disable("add","remove","import","export")
+    w2ui.grd_investigated_systems.toolbar.disable("add","remove","import","export")
+    w2ui.grd_malware.toolbar.disable("add","remove","import","export")
+    w2ui.grd_accounts.toolbar.disable("add","remove","import","export")
+    w2ui.grd_network.toolbar.disable("add","remove","import","export")
+    w2ui.grd_exfiltration.toolbar.disable("add","remove","import","export")
+    w2ui.grd_osint.toolbar.disable("add","remove","import","export")
+    w2ui.grd_systems.toolbar.disable("add","remove","import","export")
+    w2ui.grd_actions.toolbar.disable("add","remove","import","export")
+    w2ui.grd_casenotes.toolbar.disable("add","remove","import","export")
+    w2ui.grd_investigators.toolbar.disable("add","remove","import","export")
+    w2ui.grd_evidence.toolbar.disable("add","remove","import","export")
 
     //deactivate context menus
     deactivate_all_context_items(w2ui.grd_timeline.menu)
@@ -34,6 +35,7 @@ function activateReadOnly(){
     deactivate_all_context_items(w2ui.grd_accounts.menu)
     deactivate_all_context_items(w2ui.grd_network.menu)
     deactivate_all_context_items(w2ui.grd_exfiltration.menu)
+    deactivate_all_context_items(w2ui.grd_osint.menu)
     deactivate_all_context_items(w2ui.grd_systems.menu)
     deactivate_all_context_items(w2ui.grd_investigators.menu)
     deactivate_all_context_items(w2ui.grd_evidence.menu)
@@ -51,6 +53,7 @@ function activateReadOnly(){
     writeprotect_grid(w2ui.grd_accounts)
     writeprotect_grid(w2ui.grd_network)
     writeprotect_grid(w2ui.grd_exfiltration)
+    writeprotect_grid(w2ui.grd_osint)
     writeprotect_grid(w2ui.grd_systems)
     writeprotect_grid(w2ui.grd_actions)
     writeprotect_grid(w2ui.grd_casenotes)
@@ -63,6 +66,7 @@ function activateReadOnly(){
     w2ui.grd_accounts.refresh()
     w2ui.grd_network.refresh()
     w2ui.grd_exfiltration.refresh()
+    w2ui.grd_osint.refresh()
     w2ui.grd_systems.refresh()
     w2ui.grd_actions.refresh()
     w2ui.grd_casenotes.refresh()
@@ -81,17 +85,17 @@ function deactivateReadOnly(){
     w2ui['toolbar'].disable('file:request_lock');
 
     //remove buttons in grids
-    w2ui.grd_timeline.toolbar.enable("add","remove")
-    w2ui.grd_investigated_systems.toolbar.enable("add","remove")
-    w2ui.grd_malware.toolbar.enable("add","remove","line_add")
-    w2ui.grd_accounts.toolbar.enable("add","remove")
-    w2ui.grd_network.toolbar.enable("add","remove")
-    w2ui.grd_exfiltration.toolbar.enable("add","remove")
-    w2ui.grd_systems.toolbar.enable("add","remove","import")
-    w2ui.grd_actions.toolbar.enable("add","remove")
-    w2ui.grd_casenotes.toolbar.enable("add","remove")
-    w2ui.grd_investigators.toolbar.enable("add","remove")
-    w2ui.grd_evidence.toolbar.enable("add","remove")
+    w2ui.grd_timeline.toolbar.enable("add","remove","import","export")
+    w2ui.grd_investigated_systems.toolbar.enable("add","remove","import","export")
+    w2ui.grd_malware.toolbar.enable("add","remove","import","export")
+    w2ui.grd_accounts.toolbar.enable("add","remove","import","export")
+    w2ui.grd_network.toolbar.enable("add","remove","import","export")
+    w2ui.grd_exfiltration.toolbar.enable("add","remove","import","export")
+    w2ui.grd_osint.toolbar.enable("add","remove","import","export")
+    w2ui.grd_systems.toolbar.enable("add","remove","import","export")
+    w2ui.grd_casenotes.toolbar.enable("add","remove","import","export")
+    w2ui.grd_investigators.toolbar.enable("add","remove","import","export")
+    w2ui.grd_evidence.toolbar.enable("add","remove","import","export")
 
     lockstate = "&#128272; open"
     $( "#lock" ).html(lockstate)
@@ -104,6 +108,7 @@ function deactivateReadOnly(){
     writeenable_grid(w2ui.grd_accounts,config.grd_accounts)
     writeenable_grid(w2ui.grd_network,config.grd_network)
     writeenable_grid(w2ui.grd_exfiltration,config.grd_exfiltration)
+    writeenable_grid(w2ui.grd_osint,config.grd_osint)
     writeenable_grid(w2ui.grd_systems,config.grd_systems)
     writeenable_grid(w2ui.grd_actions,config.grd_actions)
     writeenable_grid(w2ui.grd_casenotes,config.grd_casenotes)
@@ -117,6 +122,7 @@ function deactivateReadOnly(){
     activate_all_context_items(w2ui.grd_accounts.menu)
     activate_all_context_items(w2ui.grd_network.menu)
     activate_all_context_items(w2ui.grd_exfiltration.menu)
+    activate_all_context_items(w2ui.grd_osint.menu)
     activate_all_context_items(w2ui.grd_systems.menu)
     activate_all_context_items(w2ui.grd_investigators.menu)
     activate_all_context_items(w2ui.grd_evidence.menu)
@@ -144,6 +150,7 @@ function deactivateReadOnly(){
     w2ui.grd_accounts.refresh()
     w2ui.grd_network.refresh()
     w2ui.grd_exfiltration.refresh()
+    w2ui.grd_osint.refresh()
     w2ui.grd_systems.refresh()
     w2ui.grd_actions.refresh()
     w2ui.grd_casenotes.refresh()
@@ -238,9 +245,12 @@ function openMispAddMalwarePopup(recid) {
     notes = w2ui.grd_malware.get(recid).notes
 
     //check what type of hash it is
-    hashtype = "md5"
-    if (hash.length == 40) hashtype = "sha1"
-    if (hash.length == 64) hashtype = "sha256"
+    hashtype = "none"
+    if(hash) {
+        hashtype = "md5"
+        if (hash.length == 40) hashtype = "sha1"
+        if (hash.length == 64) hashtype = "sha256"
+    }
 
 
     records = [ {recid:1, aurora_field_type:"Filename",misp_field_type:"filename",value:filename,comment:notes},
@@ -531,6 +541,9 @@ function getLateralMovements(data){
         if (data.timeline[i].event_host == null || data.timeline[i].event_source_host == null || data.timeline[i].event_host == "" || data.timeline[i].event_source_host == "") {
             continue;
         }
+
+        //only show if visual is activated
+        if(!data.timeline[i].visual || data.timeline[i].visual ==0) continue;
 
         // Add hosts 
         // ---------
@@ -835,6 +848,54 @@ function showActivityPlot(){
     })
 }
 
+//////////////////////////////////////
+//////// Import GUI Functions ////////
+//////////////////////////////////////
+
+/**
+ * Prepare and open the popup for import column mapping
+ * @param recid -record id of right clicked record.
+ */
+function openImportPopup(fields,content,import_fieldset) {
+
+    records = []
+
+    firstline = CSVtoArrayEasy(content[0]) //need that for mapping and can?t use it for the editable items as w2ui will mess with it
+
+
+    for(var i=0; i<fields.length;i++){
+        records.push({recid:records.length+1, csv:"", grid:fields[i],fieldname:import_fieldset[i]})
+    }
+
+
+    w2ui.grd_import_mapping.getColumn('csv').editable.items = CSVtoArray(content[0])
+    w2ui.grd_import_mapping.records = records
+    w2ui.grd_import_mapping.refresh()
+
+
+    w2popup.open({
+        title: 'Import Mapping',
+        width: 550,
+        height: 400,
+        showMax: true,
+        body: '<div id="main"></div>',
+        onOpen: function (event) {
+            event.onComplete = function () {
+                $('#w2ui-popup #main').w2render('popup_layout')
+                //render grid into form
+                w2ui.popup_layout.content('main', w2ui.grd_import_mapping);
+            };
+        },
+        onToggle: function (event) {
+            event.onComplete = function () {
+                w2ui.popup_layout.resize();
+            }
+        }
+    });
+}
+
+
+
 
 //////////////////////////////////
 //////// Helper Functions ////////
@@ -884,3 +945,7 @@ function activate_all_context_items(menu){
         menu[i].disabled = false
     }
 }
+
+
+
+
