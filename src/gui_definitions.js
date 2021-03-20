@@ -99,7 +99,7 @@ var config = {
     ////////////////////
     ///// Toolbars /////
     ////////////////////
-    
+
     toolbar: {
         name: 'toolbar',
         items: [
@@ -639,14 +639,24 @@ var config = {
             toolbar: true,
             footer: true
         },
+        multiSearch: true,
+        searches: [
+            { field: 'text', caption: 'Short Name', type: 'text' },
+            { field: 'full_name', caption: 'Full Name', type: 'text'},
+            { field: 'affiliation', caption: '🏢 Affiliation', type: 'text' },
+            { field: 'role', caption: '🙋 Role', type: 'text'},
+            { field: 'contact_email', caption: '📬 Email', type: 'text'},
+            { field: 'contact_phone', caption: '📱 Phone', type: 'text'},
+            { field: 'contact_other', caption: '📖 Other', type: 'text' }
+        ],
         columns: [
-            { field: 'text',sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 }  },
-            { field: 'full_name',sortable: true, caption: 'Full Name', size: '200px',editable: { type: 'text', min: 5, max: 40 }  },
-            { field: 'role', sortable: true,caption: 'Role', size: '200px' , editable: { type: 'text', min: 0, max: 40 } },
-            { field: 'phone', sortable: true,caption: 'Phone', size: '100%' , editable: { type: 'text', min: 0, max: 40 } },
-            { field: 'email', sortable: true,caption: 'eMail', size: '100%' , editable: { type: 'text', min: 0, max: 80 } },
-            { field: 'other', sortable: true,caption: 'Other', size: '100%' , editable: { type: 'text', min: 0, max: 80 } },
-            { field: 'affiliation', sortable: true,caption: 'Affiliation', size: '100%' , editable: { type: 'text', min: 0, max: 12 } },
+            { field: 'text', sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 } },
+            { field: 'full_name', sortable: true, caption: 'Full Name', size: '200px', editable: { type: 'text', min: 5, max: 40 } },
+            { field: 'affiliation', sortable: true, caption: '🏢 Affiliation', size: '100px',editable: { type: 'text', min: 5, max: 40 } },
+            { field: 'role', sortable: true, caption: '🙋 Role', size: '150px', editable: { type: 'text', min: 0, max: 40 } },
+            { field: 'contact_email', sortable: true, caption: '📬 Email', size: '150px', editable: { type: 'text', min: 5, max: 40 } },
+            { field: 'contact_phone', sortable: true, caption: '📱 Phone', size: '100px', editable: { type: 'text', min: 5, max: 40 } },
+            { field: 'contact_other', sortable: true, caption: '📖 Other', size: '250px', editable: { type: 'text', min: 5, max: 40 } },
         ],
         toolbar: {
             items: [
