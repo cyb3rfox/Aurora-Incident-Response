@@ -674,18 +674,32 @@ var config = {
         ],
         multiSearch: true,
         searches: [
+            { field: 'type', caption: 'Type', type: 'list', options: {items: case_data.evidence_types} },
             { field: 'name', caption: 'Name', type: 'text' },
             { field: 'description', caption: 'Description', type: 'text' },
             { field: 'provider', caption: 'Provider', type: 'text' },
+            { field: 'hash', caption: 'Hash', type: 'text' },
             { field: 'location', caption: 'Location', type: 'text' },
         ],
         columns: [
             { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
+            { field: 'type',sortable: true, caption: 'Type', size: '125px', editable: { type: 'list', items: case_data.evidence_types, showAll: true ,  match: 'contains' },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }
+            },
             { field: 'name',sortable: true, caption: 'Name', size: '130px', editable: { type: 'text'}  },
             { field: 'description',sortable: true, caption: 'Description', size: '100%',editable: { type: 'text' }  },
-            { field: 'size', sortable: true,caption: 'Size', size: '120px' , editable: { type: 'text' }},
-            { field: 'provider', sortable: true,caption: 'Acquired/Provided', size: '120px' , editable: { type: 'text' }},
-            { field: 'location', sortable: true,caption: 'Location', size: '120px' , editable: { type: 'text' }},
+            { field: 'size', sortable: true,caption: 'Size', size: '60px' , editable: { type: 'text' }},
+            { field: 'hash', sortable: true,caption: 'Hash', size: '150px' , editable: { type: 'text' }},
+            { field: 'provider', caption: 'Provided by', size: '200px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
+                render: function (record, index, col_index) {
+                    var html = this.getCellValue(index, col_index);
+                    return html || '';
+                }
+            },
+            { field: 'location', sortable: true,caption: 'Location', size: '150px' , editable: { type: 'text' }},
         ],
         toolbar: {
             items: [

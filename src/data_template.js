@@ -79,6 +79,16 @@ data_template  = {
         { id: 6, text: 'C2' },
         { id: 7, text: 'Actions on Obj.' },
     ],
+    "evidence_types":[
+        { id: 1, text: 'File' },
+        { id: 2, text: 'System Logs' },
+        { id: 3, text: 'Network Logs' },
+        { id: 4, text: 'Triaged System' },
+        { id: 5, text: 'Cloned System' },
+        { id: 6, text: 'Memory Dump' },
+        { id: 7, text: 'External Source' },
+        { id: 8, text: 'Other' },
+    ],
 }
 
 
