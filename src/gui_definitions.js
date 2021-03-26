@@ -651,7 +651,7 @@ var config = {
         ],
         columns: [
             { field: 'text', sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text', min: 3, max: 5 } },
-            { field: 'full_name', sortable: true, caption: 'Full Name', size: '200px', editable: { type: 'text', min: 5, max: 40 } },
+            { field: 'full_name', sortable: true, caption: 'Full Name', size: '100%', editable: { type: 'text', min: 5, max: 40 } },
             { field: 'affiliation', sortable: true, caption: '🏢 Affiliation', size: '100px',editable: { type: 'text', min: 5, max: 40 } },
             { field: 'role', sortable: true, caption: '🙋 Role', size: '150px', editable: { type: 'text', min: 0, max: 40 } },
             { field: 'contact_email', sortable: true, caption: '📬 Email', size: '150px', editable: { type: 'text', min: 5, max: 40 } },
