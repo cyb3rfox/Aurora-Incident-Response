@@ -1,12 +1,11 @@
 // Keep track of the file backing the current data object
-currentfile=""
+currentfile = ""
 
 // Preparation to support other storage methods like webdav soon
-currentmethod="file"
+currentmethod = "file"
 
 // indicates if the user currently has the lock
 lockedByMe = true
-
 
 // For new Files set case data to the default template
 case_data = data_template
@@ -21,7 +20,6 @@ case_data = data_template
  * retrieves all changes from the various grids and transfers them into the global storage json
  */
 function syncAllChanges(){
-
     w2ui.grd_timeline.save()
     case_data.timeline = w2ui.grd_timeline.records
     w2ui.grd_investigated_systems.save()
@@ -48,7 +46,6 @@ function syncAllChanges(){
     case_data.evidence = w2ui.grd_evidence.records
 
     // Data from the case Details popup is stored right to the storage object. So no need to update it here.
-
 }
 
 
@@ -58,18 +55,14 @@ function syncAllChanges(){
  */
 
 function updateSOD(){
-
     switch(currentmethod){
-
         case "file":
             updateSODFile()
             break;
-
         case "webdav":
             updateSODWebdav()
             break
     }
-
 }
 
 
@@ -78,7 +71,6 @@ function updateSOD(){
  * Get current information from storage file and write to th ui objects.
  */
 function updateSODFile() { //TODO: need to write that in a way that it also works when you don0t have the lock. currently all calls to editable will fail when they are not set
-
     var fs = require('fs');
     w2utils.lock($( "#main" ),"Loading file...",true)
 
@@ -122,17 +114,12 @@ function updateSODFile() { //TODO: need to write that in a way that it also work
     }
 
     // Data from the case Details popup is taken right from the storage object. So no need to update it here.
-
     return true
-
-
 }
 
 
 function updateSODWebdav() {
-
     alert("Not implemented yet.")
-
 }
 
 
@@ -144,10 +131,8 @@ function updateSODWebdav() {
  * Clears all grids and creates a new case_data object from the template
  */
 function newSOD() {
-
     w2confirm('Are you sure you want to create a new SOD? All unsaved data will be lost.', function btn(answer) {
         if (answer == "Yes") {
-
             case_data = data_template
             w2ui.grd_timeline.clear()
             w2ui.grd_timeline.render()
@@ -178,7 +163,7 @@ function newSOD() {
             deactivateReadOnly()
             stopAutoUpdate()
             startAutoSave()
-            lockstate = "&#128272; open"
+            lockstate = "&#128272; Case unlocked (edits allowed)"
             $("#lock").html(lockstate)
             lockedByMe = true
 
@@ -193,10 +178,8 @@ function newSOD() {
  * currentmethod variable it calls the correct concrete implementation
  */
 function saveSOD(){
-
     //TODO: After implementing webdav: If the file has not been saved before (filepath is empty), ask if the user wants to save to filesystem or webdav
     switch(currentmethod){
-
         case "file":
             return saveSODFile()
             break;
@@ -205,7 +188,6 @@ function saveSOD(){
             return saveSODWebdav()
             break
     }
-
 }
 
 
@@ -214,9 +196,7 @@ function saveSOD(){
  * currentmethod variable it calls the correct concrete implementation
  */
 function openSOD(){
-
     switch(currentmethod){
-
         case "file":
             openSODFile()
             break;
@@ -225,7 +205,6 @@ function openSOD(){
             openSODWebdav()
             break
     }
-
 }
 
 
@@ -239,7 +218,6 @@ function openSOD(){
  * to supply patches here to lift the old file format to the new file format.
  */
 function updateVersion(current_version){
-
     case_data.storage_format_version = storage_format_version
 
     // 2 -> 3
@@ -265,7 +243,6 @@ function updateVersion(current_version){
     // 4 -> 5
     if(current_version<5) {
 
-
     case_data.system_types =[
         {id:1,text:"Desktop"},
         {id:2,text:"Server"},
@@ -282,14 +259,12 @@ function updateVersion(current_version){
     }
 
     // 5->6
-
     case_data.osint=[]
 
     case_data.storage_format_version = 6
 
     // 6->7
     case_data.storage_format_version = 7
-
 }
 
 
@@ -305,7 +280,6 @@ function updateVersion(current_version){
  * Saves file to drive or share
  */
 function saveSODFile(){
-
     if(case_data.locked && !lockedByMe){
         w2alert("Cannot save. File locked by another analyst." );
         return
@@ -325,7 +299,6 @@ function saveSODFile(){
         currentfile = selectedPaths
     }
 
-
     var fs = require("fs");
     w2utils.lock($( "#main" ),"Saving file...",true)
     var buffer = new Buffer.from(JSON.stringify(case_data,null, "\t"));
@@ -338,17 +311,14 @@ function saveSODFile(){
     w2ui.sidebar.refresh()
 
     return true
-
 }
 
 /**
  * Opens SOD file from Disk or Share
  */
 function openSODFile() {
-
     w2confirm('Are you sure you want to open a SOD? All unsaved data in the current one will be lost.', function btn(answer) {
         if (answer == "Yes") {
-
             const {remote} = require('electron')
             const {dialog} = remote
             const path = dialog.showOpenDialog({filters:[{name:"Case File",extensions:["fox"]}]});
@@ -358,7 +328,6 @@ function openSODFile() {
 
             var fs = require('fs');
 
-
             var filebuffer = fs.readFileSync(path.toString());
             case_data = JSON.parse(filebuffer);
 
@@ -366,7 +335,6 @@ function openSODFile() {
                 w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again")
                 return
             }
-
 
             w2ui.grd_timeline.records = case_data.timeline
             w2ui.grd_timeline.refresh()
@@ -398,30 +366,22 @@ function openSODFile() {
             w2ui.main_layout.content('main', w2ui.grd_timeline);
             w2ui.sidebar.select('timeline')
 
-
             // check if its locked
             if (case_data.locked){
-
-
                 w2alert("The SOD is locked by another analyst. Opening in Readonly mode.")
                 lockedByMe = false
                 activateReadOnly()
                 stopAutoSave()
                 startAutoUpdate()
-
             }
             else {
-
                 if(case_data.storage_format_version< storage_format_version){
                     updateVersion(case_data.storage_format_version)
                 }
                 requestLock(true)
-
             }
 
             w2ui.main_layout.content('main', w2ui.grd_timeline);
-
-
         }
     });
 }
@@ -436,19 +396,15 @@ function openSODFile() {
  * Saves file to webdav
  */
 function saveSODWebdav() {
-
     alert("Not implemented yet.")
     return true
-
 }
 
 /**
  * Opens file from webdav
  */
 function openSODWebdav() {
-
     alert("Not implemented yet.")
-
 }
 
 
@@ -475,15 +431,12 @@ function lockSOD(){ // check if it is still needed - switched everything over to
  * The user releases the file so anyone else can successfully obtain the lock
  */
 function releaseLock(){
-
-    case_data.locked=false
+    case_data.locked = false
     saveSOD()
     lockedByMe = false
     activateReadOnly()
     stopAutoSave()
     startAutoUpdate()
-
-
 }
 
 /**
@@ -491,24 +444,23 @@ function releaseLock(){
  * @param sodiscurrent - if this method is called right after a sod was loaded there is no need to load it again to check the lock state.
  */
 function requestLock() {
-
-
-
     if (updateSOD() == false) {
         activateReadOnly()
         w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again")
         return
     }
 
-
     if(case_data.locked) {
         w2alert("The SOD is still locked by another analyst.")
         return
     }
+
     stopAutoUpdate()
     startAutoSave()
     deactivateReadOnly()
-    lockstate = "&#128272; open"
+
+    lockstate = "&#128272; Case unlocked (edits allowed)"
+
     $( "#lock" ).html(lockstate)
     lockedByMe = true
     case_data.locked=true
@@ -520,36 +472,35 @@ function requestLock() {
  * Forces the lock. Data could become inconsistent
  */
 function forceUnLock() {
-
-    w2confirm('You are about to force-aqcuire the lock on the file. If anyone else still has the file opened it might lead to data loss', function btn(answer) {
+    w2confirm('You are about to force-aqcuire the lock on the file. If anyone else still has the file opened it might lead to data loss.', function btn(answer) {
         if (answer == "No") {
             return
         }
-        else{
-
+        else {
             if (updateSOD() == false) {
                 activateReadOnly()
-                w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again")
+                w2alert("You are opening a file created with a newer version of Aurora IR. Please upgrade to the newest version of Aurora IR and try again.")
                 return
             }
 
             stopAutoUpdate()
             startAutoSave()
             deactivateReadOnly()
-            lockstate = "&#128272; open"
+            lockstate = "&#128272; Case unlocked (edits allowed)"
             $( "#lock" ).html(lockstate)
             lockedByMe = true
             case_data.locked=true
 
+            // Deal with save button
+            w2ui['toolbar'].ensable('file:save_sod');
+
+            // Deal with locks
+            w2ui['toolbar'].ensable('file:release_lock');
+            w2ui['toolbar'].disable('file:request_lock');
+            w2ui['toolbar'].disable('file:force_unlock');
             saveSOD()
-
-
-
         }
-
     })
-
-
 }
 
 

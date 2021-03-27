@@ -9,10 +9,13 @@
  * Change to GUI to read only mode when the user does not have the lock
  */
 function activateReadOnly(){
-    //deactivate save button
+    // Deactivate save button
     w2ui['toolbar'].disable('file:save_sod');
+
+    // Deal with locks
     w2ui['toolbar'].disable('file:release_lock');
     w2ui['toolbar'].enable('file:request_lock');
+    w2ui['toolbar'].enable('file:force_unlock');
 
     //remove buttons in grids
     w2ui.grd_timeline.toolbar.disable("add","remove","import","export")
@@ -42,7 +45,7 @@ function activateReadOnly(){
     deactivate_all_context_items(w2ui.grd_actions.menu)
     deactivate_all_context_items(w2ui.grd_casenotes.menu)
 
-    lockstate = "&#128274; locked"
+    lockstate = "&#128274; Case locked (no edits allowed)"
     $( "#lock" ).html(lockstate)
 
     //deactivate grid editable
@@ -79,10 +82,13 @@ function activateReadOnly(){
  * Change to gui to read only mode when the user does not have the lock
  */
 function deactivateReadOnly(){
-    //deactivate save button
+    // Activate save button
     w2ui['toolbar'].enable('file:save_sod');
+
+    // Deal with locks
     w2ui['toolbar'].enable('file:release_lock');
     w2ui['toolbar'].disable('file:request_lock');
+    w2ui['toolbar'].disable('file:force_unlock');
 
     //remove buttons in grids
     w2ui.grd_timeline.toolbar.enable("add","remove","import","export")
@@ -97,7 +103,7 @@ function deactivateReadOnly(){
     w2ui.grd_investigators.toolbar.enable("add","remove","import","export")
     w2ui.grd_evidence.toolbar.enable("add","remove","import","export")
 
-    lockstate = "&#128272; open"
+    lockstate = "&#128272; Case unlocked (edits allowed)"
     $( "#lock" ).html(lockstate)
 
     //activate grid editable
@@ -309,7 +315,7 @@ function openMispAddNetworkPopup(recid) { //TODO: code for network misp
             comment:notes
         })
     }
-    
+
     if (ip) {
         records.push({
             recid: records.length + 1,
@@ -319,7 +325,7 @@ function openMispAddNetworkPopup(recid) { //TODO: code for network misp
             comment: notes
         })
     }
-    
+
     if (ip && domainname) {
         records.push({
             recid:records.length + 1,
@@ -329,7 +335,7 @@ function openMispAddNetworkPopup(recid) { //TODO: code for network misp
             comment: notes
         })
     }
-    
+
     if (ip && port) {
         records.push({
             recid: records.length + 1,
@@ -466,7 +472,7 @@ function timeline2vis(tl){
 function showTimelineView(){
     syncAllChanges()
     w2ui.main_layout.content(
-        'main', 
+        'main',
         '<div style="height:100%;width:100%" id="graph"></div>');
 
     data = timeline2vis(case_data.timeline)
@@ -534,7 +540,7 @@ function getLateralMovements(data){
 
     var hosts = []      // Stores the label for host i-th
     var types = []      // Stores the type of host i-th
-    
+
 
     for (var i=0; i < data.timeline.length; i++) {
         // Only add when both hosts need to be set
@@ -545,7 +551,7 @@ function getLateralMovements(data){
         //only show if visual is activated
         if(!data.timeline[i].visual || data.timeline[i].visual ==0) continue;
 
-        // Add hosts 
+        // Add hosts
         // ---------
 
         // Add host 1
@@ -588,7 +594,7 @@ function getLateralMovements(data){
 
         // color lateral and exfil differently
         color = "#cccccc"
-        
+
         if (data.timeline[i].event_type == "EventLog") {
             color = "limegreen"
         } else if (data.timeline[i].event_type == "File") {
@@ -614,13 +620,13 @@ function getLateralMovements(data){
         }
 
         entry = {
-            from: source, 
-            to: destination, 
+            from: source,
+            to: destination,
             arrows: {
                 enabled: true,
                 type: 'vee',
                 to: { enabled: true }
-            }, 
+            },
             value: 1,
             smooth: "discrete",
             length: 300,
@@ -635,7 +641,7 @@ function getLateralMovements(data){
     // Build nodes array
     for (var i = 0; i < hosts.length;i++){
         entry = {
-            id: i, 
+            id: i,
             label: "\n" + hosts[i] + "\n" + getHostIP(data.systems, hosts[i]),
             group: types[i]
         }
@@ -643,7 +649,7 @@ function getLateralMovements(data){
     }
 
     result = {
-        nodes: nodes, 
+        nodes: nodes,
         edges:edges
     }
 
@@ -656,7 +662,7 @@ function getLateralMovements(data){
 function showLateralMovement(){
     syncAllChanges()
     w2ui.main_layout.content(
-        'main', 
+        'main',
         '<div style="height:100%;width:100%" id="graph"></div>'
     )
 
@@ -665,7 +671,7 @@ function showLateralMovement(){
         $('#graph').html("<div style='align-items: center;'><center><h2>No events to display</h2><p>Add new events in the timeline tab first and mark them as 'Visualizable' to show them here.</p></center></div>")
     } else {
         var container = document.getElementById('graph')
-        
+
         // Configuration for the Timeline
         var options = {
             edges: {},
@@ -945,7 +951,3 @@ function activate_all_context_items(menu){
         menu[i].disabled = false
     }
 }
-
-
-
-

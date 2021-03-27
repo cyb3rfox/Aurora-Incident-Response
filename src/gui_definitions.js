@@ -108,9 +108,9 @@ var config = {
                     { type: 'button', id: 'open_sod', text: 'Open Engagement (File)', icon: 'fa fa-folder-open' },
                     { type: 'button', id: 'open_webdav', text: 'Open Engagement (WebDav)', icon: 'fa fa-server' },
                     { type: 'button', id: 'save_sod', text: 'Save Engagement', icon: 'fa fa-save' },
-                    { type: 'button', id: 'release_lock', text: 'Release Lock', icon: 'fa fa-unlock' },
-                    { type: 'button', id: 'request_lock', text: 'Request Lock', icon: 'fa fa-lock' },
-                    { type: 'button', id: 'force_unlock', text: 'Force Unlock', icon: 'fa fa-bomb' },
+                    { type: 'button', id: 'release_lock', text: 'Release Lock for Others', icon: 'fa fa-unlock' },
+                    { type: 'button', id: 'request_lock', text: 'Claim Lock to Edit', icon: 'fa fa-lock' },
+                    { type: 'button', id: 'force_unlock', text: 'Force Unlock to Edit', icon: 'fa fa-bomb' },
                 ]},
             { type: 'button', id: 'case_details', text: 'Case Configuration', icon: 'fa fa-cogs' },
             { type: 'menu', id: 'help', text: 'Help', icon: 'fa fa-question-circle', items: [
@@ -133,7 +133,7 @@ var config = {
 
     sidebar: {
         name: 'sidebar',
-        bottomHTML : '<div id="lock" style="background-color: #eee; padding: 10px 5px; border-top: 1px solid silver">&#128272; open</div>',
+        bottomHTML : '<div id="lock" style="background-color: #eee; padding: 10px 5px; border-top: 1px solid silver">&#128272; Case unlocked (edits allowed)</div>',
         nodes: [
             { id: 'investigation', text: 'Investigation', group: true, expanded: true, nodes: [
                     { id: 'timeline', text: 'Timeline', icon: 'fa fa-clock-o'},
