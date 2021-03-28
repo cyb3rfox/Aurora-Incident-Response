@@ -101,6 +101,8 @@ function updateSODFile() { //TODO: need to write that in a way that it also work
     w2ui.grd_systems.refresh()
     w2ui.grd_actions.records = case_data.actions
     w2ui.grd_actions.refresh()
+    w2ui.grd_evidence.records = case_data.evidence
+    w2ui.grd_evidence.refresh()
     w2ui.grd_investigators.records = case_data.investigators
     w2ui.grd_investigators.refresh()
     w2ui.grd_casenotes.records = case_data.casenotes
@@ -354,6 +356,8 @@ function openSODFile() {
             w2ui.grd_systems.refresh()
             w2ui.grd_actions.records = case_data.actions
             w2ui.grd_actions.refresh()
+            w2ui.grd_evidence.records = case_data.evidence
+            w2ui.grd_evidence.refresh()
             w2ui.grd_investigators.records = case_data.investigators
             w2ui.grd_investigators.refresh()
             w2ui.grd_casenotes.records = case_data.casenotes
