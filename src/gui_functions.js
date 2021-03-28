@@ -228,6 +228,38 @@ function openCasePopup() {
     });
 }
 
+/**
+ * Show case Details
+ */
+ function openSANSPopup() {
+    if (case_data.locked && !lockedByMe){
+        alert("Can't change scoring server when the file is locked.")
+        return;
+    }
+    w2ui.case_form.record['caseid']=case_data.scoringserver
+    w2ui.case_form.record['client']=case_data.teamid
+    w2ui.case_form.record['start_date']=case_data.teamsecret
+
+    w2popup.open({
+        title: 'SANS FOR608 Scoring Server',
+        width: 550,
+        height: 400,
+        showMax: true,
+        body: '<div id="main"></div>',
+        onOpen: function (event) {
+            event.onComplete = function () {
+                $('#w2ui-popup #main').w2render('popup_layout')
+                w2ui.popup_layout.content('main', w2ui.sans_form);
+            };
+        },
+        onToggle: function (event) {
+            event.onComplete = function () {
+                w2ui.popup_layout.resize();
+            }
+        }
+    });
+}
+
 
 /**
  * Prepare and open teh popup for malware misp transfer

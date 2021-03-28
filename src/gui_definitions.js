@@ -94,7 +94,16 @@ var config = {
             }
         }
     },
-
+    sans_form: {
+        header: 'Connection Settings',
+        name: 'sans_form',
+        formURL: './templates/for608.html',
+        fields: [
+            { name: 'scoringserver',  type: 'text',required: true, html: { caption: 'Scoring Server', attr: 'size="40"' } },
+            { name: 'teamid', type: 'text', required: true, html: { caption: 'Team ID', attr:  'maxlength="40"' } },
+            { name: 'teamsecret', type: 'text', required: true ,html: { caption: 'Team Secret' }},
+        ],
+    },
 
     ////////////////////
     ///// Toolbars /////
@@ -113,6 +122,7 @@ var config = {
                     { type: 'button', id: 'force_unlock', text: 'Force Unlock to Edit', icon: 'fa fa-bomb' },
                 ]},
             { type: 'button', id: 'case_details', text: 'Case Configuration', icon: 'fa fa-cogs' },
+            { type: 'button', id: 'scoring_server', text: 'FOR608 Scoring', icon: 'fa fa-gamepad' },
             { type: 'menu', id: 'help', text: 'Help', icon: 'fa fa-question-circle', items: [
                     { type: 'button', id: 'online_help', text: 'Online Help', icon: 'fa fa-globe' },
                     { type: 'button', id: 'about', text: 'About', icon: 'fa fa-info' },

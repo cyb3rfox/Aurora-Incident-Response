@@ -39,6 +39,9 @@ registerComponents = function(){
             case 'case_details':
                 openCasePopup()
                 break;
+            case 'scoring_server':
+                openSANSPopup()
+                break;
             case 'help:about':
                 openAboutPopup()
                 break;
