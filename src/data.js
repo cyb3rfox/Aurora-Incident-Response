@@ -258,10 +258,14 @@ function updateVersion(current_version){
     ]
 
     case_data.event_types.push({id:11, text:"C2"})
+        current_version=5
     }
 
     // 5->6
-    case_data.osint=[]
+    if(current_version<6) {
+        case_data.osint = []
+        current_version=6
+    }
 
     case_data.storage_format_version = 6
 
@@ -338,6 +342,10 @@ function openSODFile() {
                 return
             }
 
+            if(case_data.storage_format_version< storage_format_version){
+                updateVersion(case_data.storage_format_version)
+            }
+
             w2ui.grd_timeline.records = case_data.timeline
             w2ui.grd_timeline.refresh()
             w2ui.grd_investigated_systems.records = case_data.investigated_systems
@@ -379,9 +387,7 @@ function openSODFile() {
                 startAutoUpdate()
             }
             else {
-                if(case_data.storage_format_version< storage_format_version){
-                    updateVersion(case_data.storage_format_version)
-                }
+
                 requestLock(true)
             }
 
