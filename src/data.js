@@ -10,6 +10,9 @@ lockedByMe = true
 // For new Files set case data to the default template
 case_data = data_template
 
+//
+sans_synch_status = false
+
 
 ///////////////////////////
 // GUI <> Data Functions //
@@ -183,6 +186,7 @@ function saveSOD(){
     //TODO: After implementing webdav: If the file has not been saved before (filepath is empty), ask if the user wants to save to filesystem or webdav
     switch(currentmethod){
         case "file":
+            sans_sync(true)
             return saveSODFile()
             break;
 
@@ -375,6 +379,10 @@ function openSODFile() {
             w2ui.grd_timeline.getColumn('event_host').editable.items = case_data.systems
             w2ui.grd_timeline.getColumn('event_source_host').editable.items = case_data.systems
 
+            w2ui.sans_form.record['scoringserver'] = case_data.scoringserver
+            w2ui.sans_form.record['teamid'] = case_data.team_id
+            w2ui.sans_form.record['teamsecret'] = case_data.team_secret
+
             w2ui.main_layout.content('main', w2ui.grd_timeline);
             w2ui.sidebar.select('timeline')
 
@@ -560,7 +568,7 @@ autoupdate_interval = null // for readonly mode
  * Autosave mode is activated when the user has the write lock. The Current state will be saved to the storage file every 5 minutes.
  */
 function startAutoSave(){
-
+    console.log("starting autosave")
     autosave_interval = setInterval(saveSOD, 5 * 60 * 1000); // autosave all 5 minutes
 }
 
