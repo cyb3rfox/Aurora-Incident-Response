@@ -864,6 +864,26 @@ registerComponents = function(){
        vt_connection_test()
 
     }
+
+    w2ui.sans_form.actions.testconnection=function(){
+
+      sans_testconnection()
+
+    }
+
+    w2ui.sans_form.actions.save=function(){
+
+        sans_save()
+
+    }
+
+    w2ui.sans_form.actions.saveandsubmit=function(){
+
+        sans_save()
+        sans_sync()
+
+    }
+
 }
 
 
