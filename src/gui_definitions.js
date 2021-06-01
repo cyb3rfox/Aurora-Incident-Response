@@ -100,6 +100,7 @@ var config = {
         formURL: './templates/for608.html',
         fields: [
             { name: 'scoringserver',  type: 'text',required: true, html: { caption: 'Scoring Server', attr: 'size="40"' } },
+            { name: 'eventid', type: 'text', required: true, html: { caption: 'Team ID', attr:  'maxlength="40"' } },
             { name: 'teamid', type: 'text', required: true, html: { caption: 'Team ID', attr:  'maxlength="40"' } },
             { name: 'teamsecret', type: 'text', required: true ,html: { caption: 'Team Secret' }},
         ],
