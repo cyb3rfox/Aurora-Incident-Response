@@ -236,12 +236,19 @@ function openCasePopup() {
         alert("Can't change scoring server when the file is locked.")
         return;
     }
-    w2ui.case_form.record['caseid']=case_data.scoringserver
-    w2ui.case_form.record['client']=case_data.teamid
-    w2ui.case_form.record['start_date']=case_data.teamsecret
+    if(case_data.scoringserver)  w2ui.sans_form.record['scoringserver']=case_data.scoringserver
+    if(case_data.eventid) w2ui.sans_form.record['eventid']=case_data.eventid
+    if(case_data.teamid) w2ui.sans_form.record['teamid']=case_data.teamid
+    if(case_data.teamsecret) w2ui.sans_form.record['teamsecret']=case_data.teamsecret
+
+    //TODO: just testing
+    w2ui.sans_form.record['scoringserver'] = "http://localhost:8000"
+    w2ui.sans_form.record['eventid'] = "1"
+    w2ui.sans_form.record['teamid'] = "Lame"
+    w2ui.sans_form.record['teamsecret'] = "wqeqwe"
 
     w2popup.open({
-        title: 'SANS FOR608 Scoring Server',
+        title: 'SANS FOR608 Scoring Server Settings',
         width: 550,
         height: 400,
         showMax: true,
