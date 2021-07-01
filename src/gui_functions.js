@@ -241,11 +241,7 @@ function openCasePopup() {
     if(case_data.teamid) w2ui.sans_form.record['teamid']=case_data.teamid
     if(case_data.teamsecret) w2ui.sans_form.record['teamsecret']=case_data.teamsecret
 
-    //TODO: just testing
-    w2ui.sans_form.record['scoringserver'] = "http://localhost:8000"
-    w2ui.sans_form.record['eventid'] = "1"
-    w2ui.sans_form.record['teamid'] = "Lame"
-    w2ui.sans_form.record['teamsecret'] = "wqeqwe"
+
 
     w2popup.open({
         title: 'SANS FOR608 Scoring Server Settings',
