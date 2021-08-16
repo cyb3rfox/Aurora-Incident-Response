@@ -674,6 +674,9 @@ function showLateralMovement(){
 
         // Configuration for the Timeline
         var options = {
+            physics:{
+                enabled: false
+            },
             edges: {},
             nodes: {
                 font: {
