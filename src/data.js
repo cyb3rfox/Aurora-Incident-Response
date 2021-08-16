@@ -249,19 +249,20 @@ function updateVersion(current_version){
     // 4 -> 5
     if(current_version<5) {
 
-    case_data.system_types =[
-        {id:1,text:"Desktop"},
-        {id:2,text:"Server"},
-        {id:3,text:"Phone"},
-        {id:4,text:"Tablet"},
-        {id:5,text:"TV"},
-        {id:6,text:"Networking device"},
-        {id:7,text:"IoT device"},
-        {id:8,text:"Other"},
-        {id:8,text:"Attacker Infra"}
-    ]
+        case_data.system_types =[
+            {id:1,text:"Desktop"},
+            {id:2,text:"Server"},
+            {id:3,text:"Phone"},
+            {id:4,text:"Tablet"},
+            {id:5,text:"TV"},
+            {id:6,text:"Networking device"},
+            {id:7,text:"IoT device"},
+            {id:8,text:"Other"},
+            {id:8,text:"Attacker Infra"}
+        ]
 
-    case_data.event_types.push({id:11, text:"C2"})
+        case_data.event_types.push({id:11, text:"C2"})
+
         current_version=5
     }
 
