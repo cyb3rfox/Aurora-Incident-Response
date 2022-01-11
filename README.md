@@ -5,7 +5,7 @@ Aurora brings "Spreadsheet of Doom" used in the SANS FOR508 class to the next le
 with keeping control over all the findings. That does not only prevent them from seeing what they already have, but even less so what they are missing. 
 
 It's intended to be used in small and big incident response investigations to track findings, tasks, making reporting easy and generally stay on top of the game. The current version has been battle tested multiple times now. 
-I'll keep fixing bugs and ading features as we go, but please remember, it's a leisure time project. So any help is appreciated.
+I'll keep fixing bugs and adding features as we go, but please remember, it's a leisure time project. So any help is appreciated.
 
 Lateral Movement
 ![alt text](./images/lateral.png "Lateral Movement Visualization")
@@ -34,7 +34,7 @@ The good news is, it's really fast to set uo your development environment. I per
 
 ### 2.1 Set up your build environment
 
-As pointed out in the description, Aurora Incident Response is built ib top of Electron which allows for multi platform compatibility.
+As pointed out in the description, Aurora Incident Response is built on top of Electron which allows for multi platform compatibility.
 You can easily install your tool chain the following way.
 
 Start by installing `node.js`. Follow the links to their [download page](https://nodejs.org/en/download/).
