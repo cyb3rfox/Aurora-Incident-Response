@@ -30,7 +30,7 @@ If you want to contribute, you are encouraged to do so. I'd totally like to see 
 The whole application is built on an electron base and written in plain Javascript and HTML.
 Even though technically I could have used node.js modules for functionality like Webdav I refrained from it.
 The reason is, that node modules will not run out of the box when migrating the code to phonegap for IOS and Android.
-The good news is, it's really fast to set uo your development environment. I personally use Webstorm but it should work with pretty much any IDE.
+The good news is, it's really fast to set up your development environment. I personally use Webstorm but it should work with pretty much any IDE.
 
 ### 2.1 Set up your build environment
 
