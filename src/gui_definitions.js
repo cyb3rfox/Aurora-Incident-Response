@@ -188,43 +188,19 @@ var config = {
         columns: [
             { field: 'date_time', caption: 'Date/Time', type:"text",size: '140px',editable: { type: 'datetime' } ,sortable: true },
             { field: 'event_type', sortable: true,caption: 'Type', size: '80px',
-                editable: { type: 'list', items: case_data.event_types, showAll: true },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
-            { field: 'event_host',sortable: true, caption: 'Event System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
-            { field: 'direction',sortable: true, caption: '⇄', size: '40px', editable: { type: 'list', items: case_data.direction, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
-            { field: 'event_source_host',sortable: true, caption: 'Remote System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+                editable: { type: 'list', items: case_data.event_types, showAll: true }},
+            { field: 'event_host',sortable: true, caption: 'Event System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' }},
+            { field: 'direction',sortable: true, caption: '⇄', size: '40px', editable: { type: 'list', items: case_data.direction, showAll: true ,  match: 'contains' }},
+            { field: 'event_source_host',sortable: true, caption: 'Remote System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' }},
             { field: 'killchain',sortable: true, caption: 'Killchain', size: '100px',
-                editable: { type: 'list', items: case_data.killchain, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+                editable: { type: 'list', items: case_data.killchain, showAll: true ,  match: 'contains' }},
             { field: 'event_data', caption: 'Event', size: '100%', info: true, editable: { type: 'text', min: 10, max: 500 }},
             { field: 'notes', caption: 'Notes', size: '200px', editable: { type: 'text', min: 0, max: 200 }},
             { field: 'visual',sortable: true, caption: 'Visual?', size: '40px', type:"checkbox", editable: { type: 'checkbox' }},
             { field: 'followup',sortable: true, caption: 'Followup', size: '40px', type:"checkbox", editable: { type: 'checkbox' }},
             { field: 'attribution', sortable: true,caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
             { field: 'owner',sortable: true, caption: 'Owner', size: '100px',
-                editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }}
+                editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' }}
         ],
         toolbar: {
             items: [
@@ -267,36 +243,16 @@ var config = {
             { field: 'date_added', sortable: true,caption: 'Date added', size: '80px' , render:'date:YYYY-MM-DD' },
             { field: 'date_updated', sortable: true,caption: 'Date updated', size: '80px',render:'date:YYYY-MM-DD'  },
             { field: 'first_compromise', sortable: true,caption: 'First Compromise', size: '140px', editable: { type: 'datetime' }},
-            { field: 'hostname', caption: 'Hostname', size: '140px' ,editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'hostname', caption: 'Hostname', size: '140px' ,editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' }},
             { field: 'verdict',sortable: true, caption: 'Verdict', size: '70px' ,
-                editable: { type: 'list', items: case_data.verdicts, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+                editable: { type: 'list', items: case_data.verdicts, showAll: true ,  match: 'contains' }},
             { field: 'summary', caption: 'Summary', size: '100%',info: true, editable: { type: 'text', min: 0, max: 500 }},
             { field: 'analysis_required',sortable: true, caption: 'Analysis req?', size: '40px', editable: { type: 'checkbox'} },
             { field: 'analysis_status', sortable: true,caption: 'Analysis status', size: '80px',
-                editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+                editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' }},
             { field: 'analyst', sortable: true,caption: 'Analyst', size: '80px',
-                editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
-            { field: 'report_status', sortable: true,caption: 'Report Status', size: '40px',editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                } }
+                editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' }},
+            { field: 'report_status', sortable: true,caption: 'Report Status', size: '40px',editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' } }
         ],
         toolbar: {
             items: [
@@ -344,11 +300,7 @@ var config = {
             { field: 'path_on_disk', sortable: true,caption: 'Path on Disk', size: '200px', editable: { type: 'text', min: 1, max: 150 } },
             { field: 'creation_date', sortable: true, caption: 'Creation Date',  size: '120px', editable: { type: 'datetime' } },
             { field: 'modification_date', sortable: true, caption: 'Last modified',  size: '120px', editable: { type: 'datetime' } },
-            { field: 'hostname', sortable: true,caption: 'Host', size: '140px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'hostname', sortable: true,caption: 'Host', size: '140px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' }},
             { field: 'md5', sortable: true,caption: 'Hash', size: '60px' , editable: { type: 'text', min: 32, max: 128 }},
             { field: 'vt', sortable: true,caption: 'vt', size: '20px',
                 render: function(record){
@@ -465,11 +417,7 @@ var config = {
             { field: 'port', sortable: true,caption: 'Port', size: '40px', type:"number", editable: { type: 'number' }},
             { field: 'context', caption: 'Context', size: '100%', info: true, editable: { type: 'text', min: 0, max: 500 }},
             { field: 'last_activity',sortable: true, caption: 'Last activity' , type:'datetime', size: '80px', editable: { type: 'datetime'} },
-            { field: 'malware', sortable: true,caption: 'Malware', size: '120px', type:"text", editable: { type: 'list', items: case_data.malware, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'malware', sortable: true,caption: 'Malware', size: '120px', type:"text", editable: { type: 'list', items: case_data.malware, showAll: true ,  match: 'contains' }},
             { field: 'whois', caption: 'Whois', size: '100px', editable: { type: 'text', min: 0, max: 1500 }},
             { field: 'attribution', sortable: true,caption: 'Attribution', size: '80px' , editable: { type: 'text', min: 0, max: 20 }},
 
@@ -512,21 +460,9 @@ var config = {
         columns: [
             { field: 'created', sortable: true,caption: 'Created' , type:'datetime', size: '100px', editable: { type: 'datetime'} },
             { field: 'exfiltime', sortable: true,caption: 'Exfil Time' , type:'datetime', size: '100px', editable: { type: 'datetime'} },
-            { field: 'stagingsystem', sortable: true,caption: 'Staging System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                } },
-            { field: 'original',sortable: true, caption: 'Original System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                } },
-            { field: 'exfil_to',sortable: true, caption: 'Exfiltrated to', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                } },
+            { field: 'stagingsystem', sortable: true,caption: 'Staging System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' } },
+            { field: 'original',sortable: true, caption: 'Original System', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' } },
+            { field: 'exfil_to',sortable: true, caption: 'Exfiltrated to', size: '120px', editable: { type: 'list', items: case_data.systems, showAll: true ,  match: 'contains' } },
             { field: 'filename',sortable: true, caption: 'Filename', size: '120px' , editable: { type: 'text', min: 0, max: 180 }},
             { field: 'size',sortable: true, caption: 'Size', size: '100px', type:"number", editable: { type: 'number' }},
             { field: 'contents', caption: 'Contents', size: '100%', info: true, editable: { type: 'text', min: 0, max: 1500 }},
@@ -561,8 +497,23 @@ var config = {
             { field: 'text', sortable: true, caption: 'Short Name', size: '100px', editable: { type: 'text' }  },
             { field: 'url',sortable: true, caption: 'URL', size: '200px',editable: { type: 'text' },
                 render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return "<a href=\"javascript:browser_open('"+html+"')\">"+html+"</a>" || '';
+                    const maybeUrl = this.getCellValue(index, col_index);
+                    const safeHtml = w2utils.encodeTags(maybeUrl);
+                    const safeUrl = encodeURI(maybeUrl);
+                    if(safeUrl == "")
+                    {
+                        return "";
+                    }
+                    try {
+                        const url = new URL(safeUrl);
+                        if(url.protocol == "http:" || url.protocol == "https:")
+                        {
+                            return `<a href="${safeUrl}">${safeHtml}</a>`;
+                        }
+                    } catch {
+                        return `<span style="color:red">${safeHtml}</span> (Invalid URL)`
+                    }
+                    //return "<a href=\"javascript:browser_open('"+html+"')\">"+html+"</a>" || '';
                 }
             },
             { field: 'desc', sortable: true,caption: 'Description' ,size:"100%", editable: { type: 'text'  } },
@@ -604,11 +555,7 @@ var config = {
             { field: 'text',sortable: true, caption: 'Hostname', size: '250px', editable: { type: 'text', min: 1, max: 100 } },
             { field: 'ip',sortable: true, caption: 'IP', size: '110px', editable: { type: 'text', min: 7, max: 15 } },
             { field: 'system_type', sortable: true, caption: 'Type', size: '120px',
-                editable: { type: 'list', items: case_data.system_types, showAll: true },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }
+                editable: { type: 'list', items: case_data.system_types, showAll: true }
             },
             { field: 'os',sortable: true, caption: 'Operating System', size: '250px', editable: { type: 'text', min: 0, max: 30 } },
             { field: 'owner',sortable: true, caption: 'Owner', size: '100px', editable: { type: 'text'} },
@@ -693,21 +640,13 @@ var config = {
         ],
         columns: [
             { field: 'date_acquired', sortable: true,caption: 'Date Acquired', editable: { type: 'datetime' } , type:'date', size: '130px',sortable: true },
-            { field: 'type',sortable: true, caption: 'Type', size: '125px', editable: { type: 'list', items: case_data.evidence_types, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }
+            { field: 'type',sortable: true, caption: 'Type', size: '125px', editable: { type: 'list', items: case_data.evidence_types, showAll: true ,  match: 'contains' }
             },
             { field: 'name',sortable: true, caption: 'Name', size: '130px', editable: { type: 'text'}  },
             { field: 'description',sortable: true, caption: 'Description', size: '100%',editable: { type: 'text' }  },
             { field: 'size', sortable: true,caption: 'Size', size: '60px' , editable: { type: 'text' }},
             { field: 'hash', sortable: true,caption: 'Hash', size: '150px' , editable: { type: 'text' }},
-            { field: 'provider', caption: 'Provided by', size: '200px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }
+            { field: 'provider', caption: 'Provided by', size: '200px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' }
             },
             { field: 'location', sortable: true,caption: 'Location', size: '150px' , editable: { type: 'text' }},
         ],
@@ -743,22 +682,10 @@ var config = {
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'date_due',sortable: true, caption: 'Date Due', render:'date:YYYY-MM-DD' , type:'date', size: '80px', editable: { type: 'date'} },
-            { field: 'task_type',sortable: true, caption: 'Type', size: '150px', editable: { type: 'list', items: case_data.task_types, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'task_type',sortable: true, caption: 'Type', size: '150px', editable: { type: 'list', items: case_data.task_types, showAll: true ,  match: 'contains' }},
             { field: 'task', sortable: true,caption: 'Task', size: '100%', info:true, editable: { type: 'text', min: 1, max: 1500 } },
-            { field: 'status',sortable: true, caption: 'Status', size: '250px', editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
-            { field: 'owner', caption: 'Owner', size: '250px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'status',sortable: true, caption: 'Status', size: '250px', editable: { type: 'list', items: case_data.status, showAll: true ,  match: 'contains' }},
+            { field: 'owner', caption: 'Owner', size: '250px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' }},
         ],
         toolbar: {
             items: [
@@ -785,11 +712,7 @@ var config = {
         columns: [
             { field: 'date_added',sortable: true, caption: 'Date added', render:'date:YYYY-MM-DD' , type:'date', size: '80px'},
             { field: 'note', sortable: true,caption: 'Note', size: '100%', info:true, editable: { type: 'text', min: 1, max: 1500 } },
-            { field: 'owner', caption: 'Owner', size: '250px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'owner', caption: 'Owner', size: '250px', editable: { type: 'list', items: case_data.investigators, showAll: true ,  match: 'contains' }},
         ],
         toolbar: {
             items: [
@@ -816,11 +739,7 @@ var config = {
         },
         columns: [
             { field: 'aurora_field_type', sortable: true,caption: 'Field Type', size: '90px' },
-            { field: 'misp_field_type', sortable: true,caption: "MISP Type", size: '90px', info:true, editable: { type: 'list', items: misp_attribute_types, showAll: true },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                } },
+            { field: 'misp_field_type', sortable: true,caption: "MISP Type", size: '90px', info:true, editable: { type: 'list', items: misp_attribute_types, showAll: true } },
             { field: 'value', sortable: true,caption: 'Value', size: '100px', info:true},
             { field: 'comment', sortable: true,caption: 'Comment', size: '100%', info:true,editable: { type: 'text', min: 1, max: 1500 }},
         ],
@@ -847,11 +766,7 @@ var config = {
         },
         columns: [
             { field: 'grid', sortable: true,caption: 'Grid Field', size: '50%'},
-            { field: 'csv', sortable: true,caption: 'First line of CSV', size: '50%', editable: { type: 'list', items: [], showAll: true },
-                render: function (record, index, col_index) {
-                    var html = this.getCellValue(index, col_index);
-                    return html || '';
-                }},
+            { field: 'csv', sortable: true,caption: 'First line of CSV', size: '50%', editable: { type: 'list', items: [], showAll: true }},
         ],
         toolbar: {
             items: [
@@ -893,3 +808,37 @@ about_content = `
 
     </div>
     `
+
+//function to sanitize strings before they are implemente
+function renderSafe(record,index,col_index)
+{
+    const unsafeVal = this.getCellValue(index,col_index);
+    if(unsafeVal == null)
+    {
+        return ""
+    }
+    else {
+        //make sure that stuff is escaped to prevent xss-style attacks
+        return w2utils.encodeTags(unsafeVal);
+    }
+}
+    
+
+
+//"brute-force" add safe render function to fields
+//not super elegant but should do the job
+for(let grid in config)
+{
+    let grd = config[grid]
+    if(grd != undefined && grd.columns != undefined)
+    {
+        for(let field of grd.columns)
+        {
+            if(field.render == undefined && field.editable != undefined && ["list","text"].includes(field.editable.type))
+            {
+                field.render = renderSafe;
+            }
+        }
+    }
+};
+

@@ -1,5 +1,5 @@
 
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, shell } = require('electron')
 const { dialog } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -34,8 +34,17 @@ function createWindow () {
     ];
 
     Menu.setApplicationMenu(Menu.buildFromTemplate(template));
+    win.webContents.openDevTools();
 
-
+    //make sure that links go externally
+    win.webContents.on('will-navigate', (event,url) => {
+        const urlObject = new URL(url);
+        if(["http:","https:"].includes(urlObject.protocol))
+        {
+            shell.openExternal(url);
+        }
+        event.preventDefault();
+    });
 
     // Open the DevTools
    //win.webContents.openDevTools()
