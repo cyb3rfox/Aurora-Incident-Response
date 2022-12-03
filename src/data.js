@@ -36,7 +36,7 @@ function syncAllChanges(){
     w2ui.grd_exfiltration.save()
     case_data.exfiltration = w2ui.grd_exfiltration.records
     w2ui.grd_osint.save()
-    case_data.osint = w2ui.grd_systems.records
+    case_data.osint = w2ui.grd_osint.records
     w2ui.grd_systems.save()
     case_data.systems = w2ui.grd_systems.records
     w2ui.grd_actions.save()
@@ -98,7 +98,7 @@ function updateSODFile() { //TODO: need to write that in a way that it also work
     w2ui.grd_network.refresh()
     w2ui.grd_exfiltration.records = case_data.exfiltration
     w2ui.grd_exfiltration.refresh()
-    w2ui.grd_osint.records = case_data.systems
+    w2ui.grd_osint.records = case_data.osint
     w2ui.grd_osint.refresh()
     w2ui.grd_systems.records = case_data.systems
     w2ui.grd_systems.refresh()
@@ -511,10 +511,10 @@ function forceUnLock() {
             case_data.locked=true
 
             // Deal with save button
-            w2ui['toolbar'].ensable('file:save_sod');
+            w2ui['toolbar'].enable('file:save_sod');
 
             // Deal with locks
-            w2ui['toolbar'].ensable('file:release_lock');
+            w2ui['toolbar'].enable('file:release_lock');
             w2ui['toolbar'].disable('file:request_lock');
             w2ui['toolbar'].disable('file:force_unlock');
             saveSOD()

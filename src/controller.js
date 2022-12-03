@@ -180,7 +180,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -235,7 +235,7 @@ registerComponents = function(){
                 currentgrid.add({ recid: getNextRECID(currentgrid) , date_added: (new Date()).getTime()});
                 break;
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -307,7 +307,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -424,7 +424,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -475,7 +475,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -537,7 +537,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -621,7 +621,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -649,7 +649,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -678,7 +678,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -704,7 +704,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -761,7 +761,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -789,7 +789,7 @@ registerComponents = function(){
                 break;
 
             case 'remove':
-                currentgrid.remove(currentgrid.getSelection())
+                currentgrid.delete(true);
                 break;
 
             case 'import':
@@ -865,11 +865,6 @@ registerComponents = function(){
 
     }
 
-    w2ui.sans_form.actions.testconnection=function(){
-
-      sans_testconnection()
-
-    }
 
     w2ui.sans_form.actions.save=function(){
 
@@ -879,7 +874,7 @@ registerComponents = function(){
 
     w2ui.sans_form.actions.saveandsubmit=function(){
 
-        sans_save()
+        sans_save(true)
         sans_sync()
 
     }
