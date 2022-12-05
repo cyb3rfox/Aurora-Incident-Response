@@ -160,7 +160,7 @@ var config = {
                     { id: 'activity', text: 'Activity Plot', icon: 'fa fa-bar-chart'}
                 ]},
             { id: 'case_management', text: 'Case Management', group: true, expanded: true, nodes: [
-                    { id: 'investigators', text: 'Investigators', icon: 'fa fa-user'},
+                    { id: 'investigators', text: 'People', icon: 'fa fa-user'},
                     { id: 'evidence', text: 'Evidence', icon: 'fa fa-gavel'},
                     { id: 'actions', text: 'Action Items', icon: 'fa fa-briefcase'},
                     { id: 'casenotes', text: 'Case Notes', icon: 'fa fa-sticky-note'},
@@ -636,9 +636,9 @@ var config = {
     },
 
 
-    ///////////////////////////////
-    ///// Investigators  GRID /////
-    ///////////////////////////////
+    ////////////////////////
+    ///// People  GRID /////
+    ////////////////////////
 
     grd_investigators: {
         name: 'grd_investigators',
@@ -667,8 +667,8 @@ var config = {
         ],
         toolbar: {
             items: [
-                { id: 'add', type: 'button', caption: 'Add Investigator', icon: 'w2ui-icon-plus' },
-                { id: 'remove', type: 'button', caption: 'Remove Investigator', icon: 'fa fa-minus' },
+                { id: 'add', type: 'button', caption: 'Add Person', icon: 'w2ui-icon-plus' },
+                { id: 'remove', type: 'button', caption: 'Remove Person', icon: 'fa fa-minus' },
                 { id: 'import', type: 'button', caption: 'Import CSV', icon: 'fa fa-upload' },
                 { id: 'export', type: 'button', caption: 'Export CSV', icon: 'fa fa-download' }
             ],

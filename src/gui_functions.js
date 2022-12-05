@@ -662,9 +662,13 @@ function getLateralMovements(data){
                 type: 'vee',
                 to: { enabled: true }
             },
+           // label:data.timeline[i].date_time,
             value: 1,
             smooth: "discrete",
             length: 300,
+            font:{
+                size:6
+        },
             color: {
                 color: color
             },
