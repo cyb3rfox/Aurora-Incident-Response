@@ -873,7 +873,8 @@ function openImportPopup(fields,content,import_fieldset) {
 
 
     for(var i=0; i<fields.length;i++){
-        records.push({recid:records.length+1, csv:"", grid:fields[i],fieldname:import_fieldset[i]})
+        const csv = firstline.find(field => fields[i] == field) || "";
+        records.push({recid:records.length+1, csv:csv, grid:fields[i],fieldname:import_fieldset[i]})
     }
 
 
