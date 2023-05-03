@@ -58,7 +58,7 @@ function import_data() {
     //when adding only add existing fields. so iun the add loop rather than going through the input data go through the mapping data and add only what's in there
 
     //build import data
-    for(var i=0;i<import_lines.length;i++){
+    for(var i=1;i<import_lines.length;i++){
         fields = CSVtoArrayEasy(import_lines[i])
        // console.log(fields)
         var import_object = {}

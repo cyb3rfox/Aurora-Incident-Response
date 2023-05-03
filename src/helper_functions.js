@@ -40,7 +40,7 @@ function CSVtoArray(text) {
 }
 
 function CSVtoArrayEasy(text){
-
+    if (!text) return;
     return text.split(",")
 
 }
